@@ -4,7 +4,11 @@ body{
 .navbar{
     background: #49DE8D;
 }
+
 .navbar-brand{
     font-size: 30px;
     font-weight: 700;
+}
+.rounded-image {
+    border-radius: 20px; /* Ajusta este valor para más o menos redondez */
 }
