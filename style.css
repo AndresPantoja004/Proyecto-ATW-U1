@@ -1,4 +1,10 @@
+body{
+    font-family: sans-serif;
+}
 .navbar{
-    background: rgb(44, 212, 44);
-    
+    background: #49DE8D;
+}
+.navbar-brand{
+    font-size: 30px;
+    font-weight: 700;
 }
