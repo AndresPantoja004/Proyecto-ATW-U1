@@ -8,135 +8,345 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 <style>
-    header{
+    header {
         height: 60px;
         background-color: black;
         color: white;
     }
+
     body {
         font-size: 14px;
     }
-
+    h3{
+        font-size: 14px;
+    }
     .row {
         margin-top: 4px;
 
     }
+
     .columna {
         background-color: rgb(255, 255, 255);
         border: 1px solid rgb(182, 185, 182);
         box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.4),
             -4px -4px 10px rgba(255, 255, 255, 0.5);
     }
-    .carrito{
-        height: 395px;
+
+    .carrito {
+        margin-top: 4px;
+        height: 360px;
     }
-    .prod{
+
+    .prod {
         height: 100px;
     }
-    .principal{
-        height: 400px;
+
+    .principal {
+        height: 450px;
     }
-    .barra{
-        background-color: white;
+
+    .barra {
+        background-color: rgb(214, 212, 212);
     }
-    .cupon{
-        height: 100px;
+
+    .cupon {
+        height: 140px;
+        margin-top: 30px;
+    }
+
+    .actualizacarrito {
+        border: solid 1px grey;
+        background-color: grey;
+        color: white;
+        width: 180px;
+        height: 40px;
+        text-align: center;
+    }
+
+    .continuar {
+        border: solid 1px grey;
+        background-color: grey;
+        color: rgb(0, 0, 0);
+        width: 170px;
+        height: 35px;
+        text-align: center;
+        margin: 5px 0px 10px 0px;
+    }
+
+    .Aplicar {
+        border: solid 1px rgb(0, 0, 0);
+        background-color: rgb(0, 0, 0);
+        color: white;
+        width: 180px;
+        height: 40px;
+        text-align: center;
+    }
+    .codigo {
+        border: solid 1px rgb(223, 220, 220);
+        background-color: (223, 220, 220);
+        color: white;
+        width: 300px;
+        height: 40px;
+        text-align: center;
+    }
+    .hacerPago{
+        border: solid 1px #27E03D;
+        background-color: #27E03D;
+        color: white;
+        width: 338px;
+        height: 40px;
+        text-align: center;
+    }
+    .camisa{
+        width: 40px;
+        height: 40px;
     }
 </style>
 
 <body>
     <!--Subido desde visual -->
-    <div class="container con1">
-        <header>
-            <h1>header</h1>
-        </header>
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupos input</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script defer  src="js/bootstrap.bundle.min.js" ></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+      header {
+          height: 60px;
+          background-color: black;
+          color: white;
+      }
+  
+      body {
+          font-size: 14px;
+      }
+      h3{
+          font-size: 14px;
+      }
+      .row {
+          margin-top: 4px;
+  
+      }
+  
+      .columna {
+          background-color: rgb(255, 255, 255);
+          border: 1px solid rgb(182, 185, 182);
+          box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.4),
+              -4px -4px 10px rgba(255, 255, 255, 0.5);
+      }
+  
+      .carrito {
+          margin-top: 8px;
+          height: 365px;
+      }
+  
+      .prod {
+          height: 100px;
+      }
+  
+      .principal {
+          height: 450px;
+      }
+  
+      .barra {
+          background-color: rgb(214, 212, 212);
+      }
+  
+      .cupon {
+          height: 100px;
+          margin-top: 30px;
+      }
+  
+      .actualizacarrito {
+          border: solid 1px grey;
+          background-color: grey;
+          color: white;
+          width: 180px;
+          height: 40px;
+          text-align: center;
+      }
+  
+      .continuar {
+          border: solid 1px grey;
+          background-color: grey;
+          color: rgb(0, 0, 0);
+          width: 170px;
+          height: 35px;
+          text-align: center;
+          margin: 5px 0px 10px 0px;
+      }
+  
+      .Aplicar {
+          border: solid 1px rgb(0, 0, 0);
+          background-color: rgb(0, 0, 0);
+          color: white;
+          width: 180px;
+          height: 40px;
+          text-align: center;
+      }
+      .codigo {
+          border: solid 1px rgb(223, 220, 220);
+          background-color: (223, 220, 220);
+          color: white;
+          width: 300px;
+          height: 40px;
+          text-align: center;
+      }
+      .hacerPago{
+          border: solid 1px #27E03D;
+          background-color: #27E03D;
+          color: white;
+          width: 338px;
+          height: 40px;
+          text-align: center;
+      }
+      .camisa{
+          width: 40px;
+          height: 40px;
+      }
+  </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand text-white" href="index.html">EspeFlex</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Ofertas</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Temporadas
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Temporada 24-25</a></li>
+                  <li><a class="dropdown-item" href="#">Temporada 23-24</a></li>                 
+                  <li><a class="dropdown-item" href="#">Temporada 22-23</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+      
+<!-- modifi -->
+      <div class="container con1">
         <div class="container">
             <div class="row">
                 <form class="d-flex align-items-center gap-2">
-                <div class=" barra col-12 align-items-inline">
-                    <hr>
-                    <label for="text">Camiseta Argentina 50 Aniversario" se ha agregado a tu carrito.</label>
-                    <button type="text" name="continuarCompra">Continuar la compra</button>
-                </div>
-                </form>
-             <div class="row  principal col-12 align-items">
-                 <div class="row columna  col-7 align-items">
-                    <div class="row columna  col-12 align-items">
-                        <div class=" prod col-2 align-items">
-                            img camisa
-                        </div>
-                        <div class=" prod col-4 align-items">
-                            <p>Product</p>
-                        </div>
-                        <div class=" prod col-2 align-items">
-                            <p>Price</p>
-                        </div>
-                        <div class=" prod col-2 align-items">
-                            <p>Quantity</p>
-                        </div>
-                        <div class=" prod col-2 align-items">
-                            <p>Subtotal</p>
-                        </div>
+                    <div class="row barra col-12">
                         <hr>
-                        <form action="">
-                            <button type="text" name="actualizacarrito">Actualizar el carrito</button>
-                        </form>
+                        <div class=" col-9 align-items-inline">
+                            <label for="text">Camiseta Argentina 50 Aniversario" se ha agregado a tu carrito.</label>
+                        </div>
+                        <div class=" col-3 align-items-inline">
+                            <button type="text" class="continuar" name="continuarCompra">Continuar la compra</button>
+                        </div>
                     </div>
-                    <div class="row columna cupon col-12 align-items">
-                        <form action="">
-                            <input type="text" name="cupon" style="margin-top: 20px;">:                        Código de cúpon
-                        </form>
+                </form>
+                <div class="row  principal col-12 align-items">
+                    <div class="row   col-8 align-items ">
+                        <div class="row  columna col-12 align-items">
+                            <div class=" prod col-2 align-items">
+                                <br>
+                                <br>
+                                x <img src="img/Camiseta_Aniversario_50.avif" alt="camisa" class="camisa">
+                            </div>
+                            <div class=" prod col-4 align-items">
+                                <p>Product</p>
+                                <br>
+                                Camiseta Argentina 50 Aniversario -S
+                            </div>
+                            <div class=" prod col-2 align-items">
+                                <p>Price</p>
+                                <br>
+                                <p>33.95$</p>
+                            </div>
+                            <div class=" prod col-2 align-items">
+                                <p>Quantity</p>
+                                <br>
+                                <form action="">
+                                    <input type="number" name="cantidad" min="1" placeholder="1" style="width:35px;">
+                                </form>
+                            </div>
+                            <div class=" prod col-2 align-items">
+                                <p>Subtotal</p>
+                                <br>
+                                <p>33.95$</p>
+                            </div>
+                            <hr>
+                            <form action="">
+                                <button type="text" class="actualizacarrito" name="actualizacarrito">Actualizar el
+                                    carrito</button>
+                            </form>
+                        </div>
+                        <div class="row columna cupon col-12 align-items-inline">
+                            <div class=" col-8 ">
+                                <input type="text"  class="codigo" name="cupon" style="margin-top: 20px; width: 300px; " placeholder="Código de cúpon"> 
+                            </div>
+                            <div class=" col-3 ">
+                                <button type="text" class="Aplicar" style="margin-top: 20px;" name="Aplicar">Aplicar el cupón</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="columna carrito col-4 align-items ">
+                        <br>
+                        <h3>Totales del carrito</h3>
+                        <br>
+                        <p>Subtotal 33.95$</p>
+                        <p>Shipping</p>
+                        <p>Envió gratuito</p>
+                        <p>Shipping to Santo Domingo</p>
+                        <p>Change address</p>
+                        <p>Total 33.95$</p>
+                        <button type="text" class="hacerPago" style="color: white;"> Proceder al
+                            pago</button>
                     </div>
                 </div>
-                    <div class="columna carrito col-5 align-items">
-                       <h3>Totales del carrito</h3>
-                       <p>Subtotal                   33.95$</p>
-                       <p>Shipping</p>
-                       <p>Envió gratuito</p>
-                       <p>Shipping to Santo Domingo</p>
-                       <p>Change address</p>
-                       <p>Total                      33.95$</p>
-                       <form action="">
-                        <button type="text" name="hacerPago"> Proceder al pago</button>
-                       </form>
-                    </div>
-                
-<hr>
-<br>
-                    <label for="url">Tu pagina web</label>
-                    <input type="url" name="url" placeholder="miweb">
-                    <button type="submit">Ingresar la url</button>
-                    <hr>
-                    <label for="tel">Ingresa tu telefono</label>
-                    <input type="tel" name="telf" pattern="(+[0-9]{2})[0-9]{9}" placeholder="09 999999999">
-                    <button type="submit">Utiliza el formato que coincida con lo solicitado</button>
-                    <hr>
-                    <label for="tel">Ingresa tu email</label>
-                    <input type="email" name="email" placeholder="mi-imail">
-                    <button type="submit">Introduce una direccion </button>
-                    <hr>
-                    <label for="number">Ingresa una cantidad</label>
-                    <input type="number" name="cantidad" min="1" max="12">
-                    <button type="submit">Introduce una cantidad </button>
-                    <hr>
-                    <label for="color">Ingresa un color</label>
-                    <input type="color" name="color">
-                    <button type="submit">Introduce un color </button>
-                    <hr>
-                    <label for="tel">Ingresa </label>
-                    <input type="search" name="busqueda" placeholder="ingresa algo para buscar">
-                    <button type="submit">Introduce un texto </button>
-                    <hr>
-                    <label for="tel">Ingresa un rango </label>
-                    <input type="range" name="range" placeholder="rango" min="1" max="10">
-                    <button type="submit">Introduce una direccion </button>
-                </form>
             </div>
-
         </div>
     </div>
-
-    <link rel="stylesheet" href="js/bootstrap.min.js">
+    <footer class="footer bg-black text-white d-flex align-items-center justify-content-center row p-3 text-center mt-3 row">
+        <div class="col d-flex flex-column gap-3 col-12 text-center d-flex align-items-center justify-content-center p-3">
+          <div class="row">
+            <h3 class="m-0 ">EspeFlex</h3> 
+          </div>  
+          <svg width="34px" height="34px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="white"><path d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M3 16V8C3 5.23858 5.23858 3 8 3H16C18.7614 3 21 5.23858 21 8V16C21 18.7614 18.7614 21 16 21H8C5.23858 21 3 18.7614 3 16Z" stroke="white" stroke-width="1.5"></path><path d="M17.5 6.51L17.51 6.49889" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <div class="row">
+            <span>Preguntas Frecuentes</span>
+          </div>
+          <div class="row">
+            <div class="col gap-3 d-flex">
+              <span>Terms and Conditions (T&C)</span>
+              <span>Privacy policy</span>
+            </div>
+          </div>
+          <div class="row payment-permit">
+            <img src="img/payment-methods-2.png" alt="">
+          </div>
+          <hr>
+          <div class="copyright">
+            Copyright &copy; 2024 Grupo #
+          </div>
+        </div>     
+    </footer>
 </body>
-
 </html>
+
+        <link rel="stylesheet" href="js/bootstrap.min.js">
+</body>
