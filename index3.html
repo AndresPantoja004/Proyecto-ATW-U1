@@ -13,11 +13,14 @@
 <style>
   body{
     font-family: 'Poppins', sans-serif;
+    height: 1000px;
   }
     button{
         border-radius: 4px;
     }
-
+.con1{
+    height: 900px;
+}
     button:hover{
         border: 1px solid #ccc;  
         /* Opcional: un borde visible al pasar el cursor */
@@ -36,18 +39,26 @@
         margin-top: 4px;
 
     }
-
+    .contai{
+        height: 1000px;
+    }
     .columna {
         background-color: rgb(255, 255, 255);
-        border: 1px solid rgb(182, 185, 182);
+        border: 1px solid rgb(102, 145, 173);
         border-radius: 4px;
         box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.4),
             -4px -4px 10px rgba(255, 255, 255, 0.5);
     }
-
+    .columnacarrito {
+        background-color: rgb(255, 255, 255);
+        border-radius: 4px;
+        border: 1px solid rgb(102, 145, 173);
+        box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.4),
+            -4px -4px 10px rgba(255, 255, 255, 0.5);
+    }
     .carrito {
         margin-top: 4px;
-        height: 360px;
+        height: 226px;
     }
 
     .prod {
@@ -164,73 +175,69 @@
                     <form class="d-flex align-items-center gap-2">
                         <div class="row barra col-12">
                             <hr>
-                            <div class=" col-9 align-items-inline">
+                            <div class=" col-6 align-items-inline">
                                 <label for="text">Camiseta Argentina 50 Aniversario" se ha agregado a tu carrito.</label>
                             </div>
                             <div class=" col-3 align-items-inline">
-                                <button type="text" class="continuar" name="continuarCompra">Continuar la compra</button>
+                                <a href="index.html" class="btn btn-outline-success" name="continuarCompra" >Continuar la compra</a>
+
                             </div>
                         </div>
                     </form>
-                    <div class="row  principal col-12 align-items">
-                        <div class="row   col-8 align-items ">
-                            <div class="row  columna col-12 align-items">
-                                <div class=" prod col-2 align-items">
-                                    <br>
-                                    <br>
-                                    <img src="img/Camiseta_Aniversario_50.avif" alt="camisa" class="camisa">
+                    <div class="row principal">
+                        <div class="col-lg-8 col-md-12">
+                            <div class="row columna">
+                                <div class="col-2">
+                                    <img src="img/Camiseta_Aniversario_50.avif" alt="camisa" class="img-fluid">
                                 </div>
-                                <div class=" prod col-4 align-items">
-                                    <p>Product</p>
-                                    <br>
-                                    Camiseta Argentina 50 Aniversario -S
+                                <div class="col-4">
+                                    <p>Producto</p>
+                                    Camiseta Argentina 50 Aniversario - S
                                 </div>
-                                <div class=" prod col-2 align-items">
-                                    <p>Price</p>
-                                    <br>
+                                <div class="col-2">
+                                    <p>Precio</p>
                                     <p>33.95$</p>
                                 </div>
-                                <div class=" prod col-2 align-items">
-                                    <p>Quantity</p>
-                                    <br>
-                                    <form action="">
-                                        <input type="number" name="cantidad" min="1" max="20" placeholder="1" style="width:35px;">
-                                    </form>
+                                <div class="col-2">
+                                    <p>Cantidad</p>
+                                    <input type="number" min="1" max="20" value="1" class="form-control">
                                 </div>
-                                <div class=" prod col-2 align-items">
+                                <div class="col-2">
                                     <p>Subtotal</p>
-                                    <br>
                                     <p>33.95$</p>
                                 </div>
-                                <hr>
-                                <form action="">
-                                    <button type="text" class="actualizacarrito" name="actualizacarrito">Actualizar el
-                                        carrito</button>
-                                </form>
                             </div>
-                            <div class="row columna cupon col-12 align-items-inline">
+                            <div class="row columna cupon align-items-inline">
                                 <div class=" col-8 ">
-                                    <input type="text"  class="codigo" name="cupon" style="margin-top: 20px; width: 300px; " placeholder="Código de cúpon"> 
+                                    <input type="text"  class="codigo" name="cupon" style="margin-top: 20px; width: 300px; color:black " placeholder="Código de cúpon"> 
                                 </div>
                                 <div class=" col-3 ">
                                     <button type="text" class="Aplicar" style="margin-top: 20px;" name="Aplicar">Aplicar el cupón</button>
                                 </div>
                             </div>
                         </div>
-                        <div class="columna carrito col-4 align-items ">
-                            <br>
-                            <h3>Totales del carrito</h3>
-                            <br>
-                            <p>Subtotal 33.95$</p>
-                            <p>Shipping</p>
-                            <p>Envió gratuito</p>
-                            <p>Shipping to Santo Domingo</p>
-                            <p>Change address</p>
-                            <p>Total 33.95$</p>
-                            <button type="text" class="hacerPago" style="color: white;"> Proceder al
-                                pago</button>
-                        </div>
-                    </div>
+    
+                        <div class="col-lg-4 col-md-12 order-md-last order-lg-0">
+                            <div class="columnacarrito carrito p-3">
+                                <h3 class="text-center">Totales del carrito</h3>
+                                <div class="d-flex justify-content-between py-1 border-bottom">
+                                    <span>Subtotal</span>
+                                    <span>33.95$</span>
+                                </div>
+                                <div class="d-flex justify-content-between py-2 border-bottom">
+                                    <span>Envío</span>
+                                    <span>Gratuito</span>
+                                </div>
+                                <div class="d-flex justify-content-between py-2 border-bottom">
+                                    <span>Envió a Santo Domingo</span>
+                                    <span>Gratis</span>
+                                </div>
+                                <div class="d-flex justify-content-between py-1 border-bottom">
+                                    <span>Total</span>
+                                    <span><strong>33.95$</strong></span>
+                                </div>
+                                <button type="button" class="hacerPago">Proceder al pago</button>
+                            </div>
                 </div>
             </div>
         </div>
