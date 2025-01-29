@@ -30,9 +30,20 @@ body{
 .container-car:hover{
     cursor: pointer;
 }
+.dropdown-menu{
+    background-color: rgb(158, 148, 148);
+    color: white;
+}
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
     .container-car {
-      width: 30%;  
+      width: 20%; 
+       
+    }
+}
+@media (max-width: 990px) {
+    .container-car {
+      width: 40%; 
+
     }
 }

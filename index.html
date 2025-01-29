@@ -3,17 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EspeStore 44</title>
+    <title>EspeStore</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
     <script defer  src="js/bootstrap.bundle.min.js" ></script>
-    <script></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function() {
+          $("form").on("submit", function(event) {
+              event.preventDefault(); // Evita que la página se recargue
+              var value = $(".form-control").val().toLowerCase(); // Obtener el texto del input en minúsculas
+              var found = false; // Variable para verificar si hay coincidencias
+  
+              $(".card").each(function() {
+                  var cardText = $(this).find(".card-text").text().toLowerCase(); // Obtener el texto de la tarjeta
+                  if (cardText.includes(value)) {
+                      $(this).show(); // Mostrar si hay coincidencia
+                      found = true;  // Se encontró al menos una coincidencia
+                  } else {
+                      $(this).hide(); // Ocultar si no hay coincidencia
+                  }
+              });
+              // Si no se encontró ninguna coincidencia, mostrar todas las tarjetas y alertar al usuario
+              if (!found) {
+                  $(".card").show();
+                  alert("No se encontraron resultados para esta búsqueda.");
+              }
+          });
+      });
+  </script>
 </head>
 <body>
   <!--Modifico Camila-->
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-          <img src="/img/logoEspe2.png" width="50" height="40" alt="blue">
+          <img src="img/logoEspe2.png" width="50" height="40" alt="blue">
           <a class=" espe navbar-brand text-white" href="index.html"  >EspeStore</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -30,7 +54,7 @@
                 <a class="nav-link dropdown-toggle" style="color: white;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Temporadas
                 </a>
-                <ul class="dropdown-menu" style="color: white;">
+                <ul class="dropdown-menu" >
                   <li><a class="dropdown-item" href="#">Temporada 24-25</a></li>
                   <li><a class="dropdown-item" href="#">Temporada 23-24</a></li>                 
                   <li><a class="dropdown-item" href="#">Temporada 22-23</a></li>
@@ -58,8 +82,8 @@
             <div class="card" style="width: 18rem;">
                 <img src="img/img1.png" class="card-img-top" alt="...">
                 <div class="card-body">
-                  <p class="card-text text-center h5">Camiseta Ecuador 1° equipación Copa america 2024 </p>
-                  <span class="text-center d-flex justify-content-center">$ 33.99</span>
+                  <p class="card-text text-center h5">Camiseta Azul 2° equipación Copa america 2025  </p>
+                  <span class="text-center d-flex justify-content-center">$ <p id="precioCamisa">38.99</p></span>
                 </div>
                 <div class="card-buttom justify-content-center d-flex mb-3">
                   <a href="index2.html" class="btn btn-outline-success" >Me interesa</a>
@@ -68,7 +92,7 @@
             <div class="card" style="width: 18rem;">
                 <img src="https://topflex-web.com/wp-content/uploads/2024/10/AC-Milan-X-Koche-4th-Football-Shirt-2223-1-300x300.jpeg" class="card-img-top" alt="...">
                 <div class="card-body">
-                  <p class="card-text  text-center h5">Camiseta Ecuador 1° equipación Copa america 2024 </p>
+                  <p class="card-text  text-center h5">Camiseta Blanca 1° equipación Copa america 2024 </p>
                   <span class="text-center d-flex justify-content-center">33.99</span>
                 </div>
                 <div class="card-buttom justify-content-center d-flex mb-3">
