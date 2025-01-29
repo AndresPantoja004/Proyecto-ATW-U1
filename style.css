@@ -22,3 +22,17 @@ body{
 .home{
     color: white;
 }
+.container-car{
+    border: 1px solid rgb(60, 255, 0);
+    border-radius: 10px;
+    color: white;
+}
+.container-car:hover{
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .container-car {
+      width: 30%;  
+    }
+}
