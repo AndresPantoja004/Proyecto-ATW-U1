@@ -12,10 +12,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
 
     <style>
-          body{
-        font-family: 'Poppins', sans-serif;
+        body {
+            font-family: 'Poppins', sans-serif;
         }
-         button {
+
+        button {
             border-radius: 4px;
         }
 
@@ -34,6 +35,10 @@
 
         .row {
             margin-top: 4px;
+        }
+
+        nav {
+            background-color: black;
         }
 
         .columna {
@@ -73,7 +78,6 @@
         }
 
         .validate-button {
-            background-color: #007bff;
             color: white;
             border: none;
             padding: 6px 12px;
@@ -93,7 +97,7 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <img src="img/logoEspe2.png" width="50" height="40" alt="blue">
-            <a class="navbar-brand" href="index.html"  style="color: #27e03d;" >EspeStore</a>
+            <a class="navbar-brand" href="index.html" style="color: #27e03d;">EspeStore</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -119,6 +123,30 @@
                         </ul>
                     </li>
                 </ul>
+                <div class="container-car d-flex gap-3 justify-content-between p-2 m-2">
+                    <div>
+                        <svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg" color="#ffffff">
+                            <path
+                                d="M19.5 22C20.3284 22 21 21.3284 21 20.5C21 19.6716 20.3284 19 19.5 19C18.6716 19 18 19.6716 18 20.5C18 21.3284 18.6716 22 19.5 22Z"
+                                fill="#ffffff" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                            <path
+                                d="M9.5 22C10.3284 22 11 21.3284 11 20.5C11 19.6716 10.3284 19 9.5 19C8.67157 19 8 19.6716 8 20.5C8 21.3284 8.67157 22 9.5 22Z"
+                                fill="#ffffff" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                            <path d="M5 4H22L20 15H7L5 4ZM5 4C4.83333 3.33333 4 2 2 2" stroke="#ffffff"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path
+                                d="M20 15H7H5.23077C3.44646 15 2.5 15.7812 2.5 17C2.5 18.2188 3.44646 19 5.23077 19H19.5"
+                                stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            </path>
+                        </svg>
+                    </div>
+                    <div>
+                        $ <span id="totalAcumulado"> 55555</span>
+                    </div>
+                </div>
                 <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
@@ -171,30 +199,43 @@
         <!-- Bootstrap Icons -->
     </div>
 
-    <footer class="footer bg-black text-white d-flex align-items-center justify-content-center row p-3 text-center mt-3 row">
-        <div class="col d-flex flex-column gap-3 col-12 text-center d-flex align-items-center justify-content-center p-3">
-          <div class="row">
-            <h3 class="m-0 ">EspeFlex</h3> 
-          </div>  
-          <svg width="34px" height="34px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="white"><path d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M3 16V8C3 5.23858 5.23858 3 8 3H16C18.7614 3 21 5.23858 21 8V16C21 18.7614 18.7614 21 16 21H8C5.23858 21 3 18.7614 3 16Z" stroke="white" stroke-width="1.5"></path><path d="M17.5 6.51L17.51 6.49889" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-          <div class="row">
-            <span>Preguntas Frecuentes</span>
-          </div>
-          <div class="row">
-            <div class="col gap-3 d-flex">
-              <span>Terms and Conditions (T&C)</span>
-              <span>Privacy policy</span>
+    <footer
+        class="footer bg-black text-white d-flex align-items-center justify-content-center row p-3 text-center mt-3 row">
+        <div
+            class="col d-flex flex-column gap-3 col-12 text-center d-flex align-items-center justify-content-center p-3">
+            <div class="row">
+                <h3 class="m-0 ">EspeFlex</h3>
             </div>
-          </div>
-          <div class="row payment-permit">
-            <img src="img/payment-methods-2.png" alt="">
-          </div>
-          <hr>
-          <div class="copyright">
-            Copyright &copy; 2024 Grupo #
-          </div>
-        </div>     
+            <svg width="34px" height="34px" stroke-width="1.5" viewBox="0 0 24 24" fill="none"
+                xmlns="http://www.w3.org/2000/svg" color="white">
+                <path
+                    d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z"
+                    stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path
+                    d="M3 16V8C3 5.23858 5.23858 3 8 3H16C18.7614 3 21 5.23858 21 8V16C21 18.7614 18.7614 21 16 21H8C5.23858 21 3 18.7614 3 16Z"
+                    stroke="white" stroke-width="1.5"></path>
+                <path d="M17.5 6.51L17.51 6.49889" stroke="white" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round"></path>
+            </svg>
+            <div class="row">
+                <span>Preguntas Frecuentes</span>
+            </div>
+            <div class="row">
+                <div class="col gap-3 d-flex">
+                    <span>Terms and Conditions (T&C)</span>
+                    <span>Privacy policy</span>
+                </div>
+            </div>
+            <div class="row payment-permit">
+                <img src="img/payment-methods-2.png" alt="">
+            </div>
+            <hr>
+            <div class="copyright">
+                Copyright &copy; 2024 Grupo #
+            </div>
+        </div>
     </footer>
 </body>
+
 </html>
 git init

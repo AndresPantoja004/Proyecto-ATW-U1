@@ -10,274 +10,291 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
 
-<style>
-  body{
-    font-family: 'Poppins', sans-serif;
-    height: 1000px;
-  }
-    button{
-        border-radius: 4px;
-    }
-.con1{
-    height: 900px;
-}
-    button:hover{
-        border: 1px solid #ccc;  
-        /* Opcional: un borde visible al pasar el cursor */
-    }
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            height: 1000px;
+        }
 
-    body {
-        font-size: 14px;
-        justify-content: safe;
-    }
+        button {
+            border-radius: 4px;
+        }
 
-    h3 {
-        font-size: 14px;
-    }
+        .con1 {
+            height: 900px;
+        }
 
-    .row {
-        margin-top: 4px;
+        button:hover {
+            border: 1px solid #ccc;
+            /* Opcional: un borde visible al pasar el cursor */
+        }
 
-    }
-    .contai{
-        height: 1000px;
-    }
-    .columna {
-        background-color: rgb(255, 255, 255);
-        border: 1px solid rgb(102, 145, 173);
-        border-radius: 4px;
-        box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.4),
-            -4px -4px 10px rgba(255, 255, 255, 0.5);
-    }
-    .columnacarrito {
-        background-color: rgb(255, 255, 255);
-        border-radius: 4px;
-        border: 1px solid rgb(102, 145, 173);
-        box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.4),
-            -4px -4px 10px rgba(255, 255, 255, 0.5);
-    }
-    .carrito {
-        margin-top: 4px;
-        height: 226px;
-    }
+        body {
+            font-size: 14px;
+            justify-content: safe;
+        }
 
-    .prod {
-        height: 100px;
-    }
+        h3 {
+            font-size: 14px;
+        }
 
-    .principal {
-        height: 423px;
-    }
+        .row {
+            margin-top: 4px;
 
-    .barra {
-        background-color: #dfe1e2;
-    }
+        }
 
-    .cupon {
-        height: 100px;
-        margin-top: 30px;
-        text-align: le;
-    }
+        .contai {
+            height: 1000px;
+        }
 
-    .actualizacarrito {
-        border: solid 1px grey;
-        background-color: grey;
-        color: white;
-        width: 180px;
-        height: 40px;
-        text-align: center;
-    }
+        .columna {
+            background-color: rgb(255, 255, 255);
+            border: 1px solid rgb(102, 145, 173);
+            border-radius: 4px;
+            box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.4),
+                -4px -4px 10px rgba(255, 255, 255, 0.5);
+        }
 
-    .continuar {
-        width: 200px;
-        height: 35px;
-        text-align: center;
-        margin: 5px 0px 10px 0px;
-    }
+        .columnacarrito {
+            background-color: rgb(255, 255, 255);
+            border-radius: 4px;
+            border: 1px solid rgb(102, 145, 173);
+            box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.4),
+                -4px -4px 10px rgba(255, 255, 255, 0.5);
+        }
 
-    .Aplicar {
-        border: solid 1px rgb(0, 0, 0);
-        background-color: rgb(0, 0, 0);
-        color: white;
-        width:98%;
-        height: 40px;
-        text-align: center;
-    }
+        .carrito {
+            margin-top: 4px;
+            height: 226px;
+        }
 
-    .codigo {
-        border: solid 1px rgb(223, 220, 220);
-        background-color: (223, 220, 220);
-        color: white;
-        width: 300px;
-        height: 40px;
-        text-align: center;
-    }
+        .prod {
+            height: 100px;
+        }
 
-    .hacerPago {
-        border: solid 1px #499cde;
-        background-color: #499cde;
-        color: white;
-        width:98%;
-        height: 40px;
-        text-align: center;
-    }
+        .principal {
+            height: 423px;
+        }
 
-    .camisa {
-        width: 90%;
-        height: 80%;
-        margin: 0px 0px 10px 0px;
-    }
-</style>
+        .barra {
+            background-color: #dfe1e2;
+        }
+
+        .cupon {
+            height: 100px;
+            margin-top: 30px;
+            text-align: le;
+        }
+
+        .actualizacarrito {
+            border: solid 1px grey;
+            background-color: grey;
+            color: white;
+            width: 180px;
+            height: 40px;
+            text-align: center;
+        }
+
+        .continuar {
+            width: 200px;
+            height: 35px;
+            text-align: center;
+            margin: 5px 0px 10px 0px;
+        }
+
+        .Aplicar {
+            border: solid 1px rgb(0, 0, 0);
+            background-color: rgb(0, 0, 0);
+            color: white;
+            width: 98%;
+            height: 40px;
+            text-align: center;
+        }
+
+        .codigo {
+            border: solid 1px rgb(223, 220, 220);
+            background-color: (223, 220, 220);
+            color: white;
+            width: 300px;
+            height: 40px;
+            text-align: center;
+        }
+
+        .hacerPago {
+            border: solid 1px #499cde;
+            background-color: #3192e1;
+            color: white;
+            width: 98%;
+            height: 40px;
+            text-align: center;
+        }
+
+        .hacerPago:hover {
+            background-color: #0f87e9;
+            border: solid 1px #388bcf;
+            color: white;
+        }
+
+        .camisa {
+            width: 90%;
+            height: 80%;
+            margin: 0px 0px 10px 0px;
+        }
+    </style>
 </head>
+
 <body>
-    <!--Subido desde visual --> 
-        <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid">
-                <img src="img/logoEspe2.png" width="50" height="40" alt="blue">
-                <a class="navbar-brand" href="index.html"  style="color: #27e03d;" >EspeStore</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="home navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" style="color: white;" aria-current="page" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" style="color: white;">Ofertas</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" style="color: white;" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Temporadas
-                            </a>
-                            <ul class="dropdown-menu" style="color: white;">
-                                <li><a class="dropdown-item" href="#">Temporada 24-25</a></li>
-                                <li><a class="dropdown-item" href="#">Temporada 23-24</a></li>
-                                <li><a class="dropdown-item" href="#">Temporada 22-23</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
-                </div>
-            </div>
-        </nav>
-
-        <!-- modifi -->
-        <div class="container con1">
-            <div class="container">
-                <div class="row">
-                    <form class="d-flex align-items-center gap-2">
-                        <div class="row barra col-12">
-                            <hr>
-                            <div class=" col-6 align-items-inline">
-                                <label for="text">Camiseta Argentina 50 Aniversario" se ha agregado a tu carrito.</label>
-                            </div>
-                            <div class=" col-3 align-items-inline">
-                                <a href="index.html" class="btn btn-outline-success" name="continuarCompra" >Continuar la compra</a>
-
-                            </div>
-                        </div>
-                    </form>
-                    <div class="row principal">
-                        <div class="col-lg-8 col-md-12">
-                            <div class="row columna">
-                                <div class="col-2">
-                                    <img src="img/Camiseta_Aniversario_50.avif" alt="camisa" class="img-fluid">
-                                </div>
-                                <div class="col-4">
-                                    <p>Producto</p>
-                                    Camiseta Argentina 50 Aniversario - S
-                                </div>
-                                <div class="col-2">
-                                    <p>Precio</p>
-                                    <p>33.95$</p>
-                                </div>
-                                <div class="col-2">
-                                    <p>Cantidad</p>
-                                    <input type="number" min="1" max="20" value="1" class="form-control">
-                                </div>
-                                <div class="col-2">
-                                    <p>Subtotal</p>
-                                    <p>33.95$</p>
-                                </div>
-                            </div>
-                            <div class="row columna cupon align-items-inline">
-                                <div class=" col-8 ">
-                                    <input type="text"  class="codigo" name="cupon" style="margin-top: 20px; width: 300px; color:black " placeholder="Código de cúpon"> 
-                                </div>
-                                <div class=" col-3 ">
-                                    <button type="text" class="Aplicar" style="margin-top: 20px;" name="Aplicar">Aplicar el cupón</button>
-                                </div>
-                            </div>
-                        </div>
-    
-                        <div class="col-lg-4 col-md-12 order-md-last order-lg-0">
-                            <div class="columnacarrito carrito p-3">
-                                <h3 class="text-center">Totales del carrito</h3>
-                                <div class="d-flex justify-content-between py-1 border-bottom">
-                                    <span>Subtotal</span>
-                                    <span>33.95$</span>
-                                </div>
-                                <div class="d-flex justify-content-between py-2 border-bottom">
-                                    <span>Envío</span>
-                                    <span>Gratuito</span>
-                                </div>
-                                <div class="d-flex justify-content-between py-2 border-bottom">
-                                    <span>Envió a Santo Domingo</span>
-                                    <span>Gratis</span>
-                                </div>
-                                <div class="d-flex justify-content-between py-1 border-bottom">
-                                    <span>Total</span>
-                                    <span><strong>33.95$</strong></span>
-                                </div>
-                                <button type="button" class="hacerPago">Proceder al pago</button>
-                            </div>
-                </div>
+    <!--Subido desde visual -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <img src="img/logoEspe2.png" width="50" height="40" alt="blue">
+            <a class="navbar-brand" href="index.html" style="color: #27e03d;">EspeStore</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="home navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" style="color: white;" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" style="color: white;">Ofertas</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" style="color: white;" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Temporadas
+                        </a>
+                        <ul class="dropdown-menu" style="color: white;">
+                            <li><a class="dropdown-item" href="#">Temporada 24-25</a></li>
+                            <li><a class="dropdown-item" href="#">Temporada 23-24</a></li>
+                            <li><a class="dropdown-item" href="#">Temporada 22-23</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
             </div>
         </div>
-        <footer
-            class="footer bg-black text-white d-flex align-items-center justify-content-center row p-3 text-center mt-3 row">
-            <div
-                class="col d-flex flex-column gap-3 col-12 text-center d-flex align-items-center justify-content-center p-3">
-                <div class="row">
-                    <h3 class="m-0 ">EspeFlex</h3>
-                </div>
-                <svg width="34px" height="34px" stroke-width="1.5" viewBox="0 0 24 24" fill="none"
-                    xmlns="http://www.w3.org/2000/svg" color="white">
-                    <path
-                        d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z"
-                        stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                    <path
-                        d="M3 16V8C3 5.23858 5.23858 3 8 3H16C18.7614 3 21 5.23858 21 8V16C21 18.7614 18.7614 21 16 21H8C5.23858 21 3 18.7614 3 16Z"
-                        stroke="white" stroke-width="1.5"></path>
-                    <path d="M17.5 6.51L17.51 6.49889" stroke="white" stroke-width="1.5" stroke-linecap="round"
-                        stroke-linejoin="round"></path>
-                </svg>
-                <div class="row">
-                    <span>Preguntas Frecuentes</span>
-                </div>
-                <div class="row">
-                    <div class="col gap-3 d-flex">
-                        <span>Terms and Conditions (T&C)</span>
-                        <span>Privacy policy</span>
+    </nav>
+
+    <!-- modifi -->
+    <div class="container con1">
+        <div class="container">
+            <div class="row">
+                <form class="d-flex align-items-center gap-2">
+                    <div class="row barra col-12">
+                        <hr>
+                        <div class=" col-6 align-items-inline">
+                            <label for="text">Camiseta Argentina 50 Aniversario" se ha agregado a tu carrito.</label>
+                        </div>
+                        <div class=" col-3 align-items-inline">
+                            <a href="index.html" class="btn btn-outline-success" name="continuarCompra">Continuar la
+                                compra</a>
+
+                        </div>
+                    </div>
+                </form>
+                <div class="row principal">
+                    <div class="col-lg-8 col-md-12">
+                        <div class="row columna">
+                            <div class="col-2">
+                                <img src="img/img1.png" alt="camisa" class="img-fluid">
+                            </div>
+                            <div class="col-4">
+                                <p>Producto</p>
+                                Camiseta Argentina 50 Aniversario - S
+                            </div>
+                            <div class="col-2">
+                                <p>Precio</p>
+                                <p>33.95$</p>
+                            </div>
+                            <div class="col-2">
+                                <p>Cantidad</p>
+                                <input type="number" min="1" max="20" value="1" class="form-control">
+                            </div>
+                            <div class="col-2">
+                                <p>Subtotal</p>
+                                <p>33.95$</p>
+                            </div>
+                        </div>
+                        <div class="row columna cupon align-items-inline">
+                            <div class=" col-8 ">
+                                <input type="text" class="codigo" name="cupon"
+                                    style="margin-top: 20px; width: 220px; color:black " placeholder="Código de cúpon">
+                            </div>
+                            <div class=" col-3 ">
+                                <button type="text" class="Aplicar" style="margin-top: 20px;" name="Aplicar">Aplicar el
+                                    cupón</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-12 order-md-last order-lg-0">
+                        <div class="columnacarrito carrito p-3">
+                            <h3 class="text-center">Totales del carrito</h3>
+                            <div class="d-flex justify-content-between py-1 border-bottom">
+                                <span>Subtotal</span>
+                                <span>33.95$</span>
+                            </div>
+                            <div class="d-flex justify-content-between py-2 border-bottom">
+                                <span>Envío</span>
+                                <span>Gratuito</span>
+                            </div>
+                            <div class="d-flex justify-content-between py-2 border-bottom">
+                                <span>Envió a Santo Domingo</span>
+                                <span>Gratis</span>
+                            </div>
+                            <div class="d-flex justify-content-between py-1 border-bottom">
+                                <span>Total</span>
+                                <span><strong>33.95$</strong></span>
+                            </div>
+                            <a href="index5.html" class=" hacerPago btn btn-outline color:black"
+                                name="continuarCompra">Proceder al pago</a>
+                        </div>
                     </div>
                 </div>
-                <div class="row payment-permit">
-                    <img src="img/payment-methods-2.png" alt="">
-                </div>
-                <hr>
-                <div class="copyright">
-                    Copyright &copy; 2024 Grupo #
-                </div>
             </div>
-        </footer>
-    </body>
- </html>
+            <footer
+                class="footer bg-black text-white d-flex align-items-center justify-content-center row p-3 text-center mt-3 row">
+                <div
+                    class="col d-flex flex-column gap-3 col-12 text-center d-flex align-items-center justify-content-center p-3">
+                    <div class="row">
+                        <h3 class="m-0 ">EspeFlex</h3>
+                    </div>
+                    <svg width="34px" height="34px" stroke-width="1.5" viewBox="0 0 24 24" fill="none"
+                        xmlns="http://www.w3.org/2000/svg" color="white">
+                        <path
+                            d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z"
+                            stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path
+                            d="M3 16V8C3 5.23858 5.23858 3 8 3H16C18.7614 3 21 5.23858 21 8V16C21 18.7614 18.7614 21 16 21H8C5.23858 21 3 18.7614 3 16Z"
+                            stroke="white" stroke-width="1.5"></path>
+                        <path d="M17.5 6.51L17.51 6.49889" stroke="white" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round"></path>
+                    </svg>
+                    <div class="row">
+                        <span>Preguntas Frecuentes</span>
+                    </div>
+                    <div class="row">
+                        <div class="col gap-3 d-flex">
+                            <span>Terms and Conditions (T&C)</span>
+                            <span>Privacy policy</span>
+                        </div>
+                    </div>
+                    <div class="row payment-permit">
+                        <img src="img/payment-methods-2.png" alt="">
+                    </div>
+                    <hr>
+                    <div class="copyright">
+                        Copyright &copy; 2024 Grupo #
+                    </div>
+                </div>
+            </footer>
+</body>
 
-
+</html>
