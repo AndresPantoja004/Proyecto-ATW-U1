@@ -257,11 +257,46 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function () {
-
+            // Al pasar el mouse sobre la imagen
+            $("#camisa").mouseenter(function () {
+                var imagen = $(this);
+    
+                // Si la imagen no está agrandada, la agrandamos
+                if (!imagen.hasClass('agrandada')) {
+                    imagen.addClass('agrandada').stop().animate({
+                        width: '100%',  // Agrandada un poco más
+                        height: '100%', // Agrandada un poco más
+                    }, 300);
+                }
+            });
+    
+            // Al quitar el mouse de la imagen
+            $("#camisa").mouseleave(function () {
+                var imagen = $(this);
+    
+                // Si la imagen está agrandada, volvemos a su tamaño original con el efecto campanita
+                if (imagen.hasClass('agrandada')) {
+                    imagen.removeClass('agrandada').stop().animate({
+                        width: '100%',  // Vuelve al tamaño original
+                        height: '100%', // Vuelve al tamaño original
+                    }, 300, 'easeOutQuad', function () {
+                        // Efecto campanita: Rebotar un poco
+                        imagen.stop().animate({
+                            marginTop: '-5px',  // Subir un poco
+                        }, 100, 'easeInOutQuad').animate({
+                            marginTop: '5px',  // Bajar un poco
+                        }, 100, 'easeInOutQuad').animate({
+                            marginTop: '0',  // Volver a la posición original
+                        }, 100, 'easeInOutQuad');
+                    });
+                }
+            });
+    
+            // Funcionalidad para validar cupón al hacer pasar el mouse
             $(".Aplicar").click(function () {
                 var cupon = $(".codigo").val(); 
                 var regex = /^[1-9][0-9]{4}$/; 
-
+    
                 // Validar el código de cupón
                 if (!regex.test(cupon)) {
                     // mostrar error
@@ -269,7 +304,7 @@
                 
                     // BORRAR LO INGRESADO
                     $(".codigo").val("").focus();
-
+    
                     // CSS DE MENSAJE ERROR
                     $(".codigo").css("border", "2px solid red").delay(1000).queue(function(next) {
                         $(this).css("border", "1px solid rgb(255, 255, 175)");
@@ -282,39 +317,9 @@
                 }
             });
         });
-        $(document).ready(function () {
-    $("#camisa").click(function () {
-        var imagen = $(this);
-
-        // Si la imagen ya está pequeña, volvemos a su tamaño original con el efecto campanita
-        if (imagen.hasClass('agrandada')) {
-            imagen.removeClass('agrandada').stop().animate({
-                width: '100%',
-                height: '100%',
-            }, 300, 'easeOutQuad', function() {
-                // Efecto campanita: Rebotar un poco
-                imagen.stop().animate({
-                    marginTop: '-5px',  // Subir un poco
-                }, 100, 'easeInOutQuad').animate({
-                    marginTop: '5px',  // Bajar un poco
-                }, 100, 'easeInOutQuad').animate({
-                    marginTop: '0',  // Volver a la posición original
-                }, 100, 'easeInOutQuad');
-            });
-        } else {
-            // Si no está pequeña, la reducimos un poco
-            imagen.addClass('agrandada').stop().animate({
-                width: '95%',  // Reducir solo un poco
-                height: '95%',  // Mantener proporción
-            }, 300, 'easeOutQuad');
-        }
-    });
-});
-
-
-
-        
     </script>
+    
+    
 
 </body>
 
