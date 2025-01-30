@@ -26,6 +26,7 @@ body{
     border: 1px solid rgb(60, 255, 0);
     border-radius: 10px;
     color: white;
+    position: relative;
 }
 .container-car:hover{
     cursor: pointer;
@@ -78,17 +79,39 @@ body{
     margin-top: 10px;
     border-radius: 5px;
 }
+#closeModal2 {
+    background: #27e03d;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+.container-contactactanos span{
+    color: gray;
+}
+.container-contactactanos a{
+    text-decoration: none;
+}
 
 
 @media (max-width: 1000px) {
-    .container-car {
+    .container-todo-car {
       width: 20%; 
        
     }
 }
 @media (max-width: 990px) {
-    .container-car {
+    .container-todo-car {
       width: 40%; 
+
+    }
+}
+@media (max-width: 990px) {
+    .information-footer {
+      width: 100%; 
 
     }
 }
