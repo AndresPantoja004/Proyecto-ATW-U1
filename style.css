@@ -1,5 +1,5 @@
 body{
-    font-family: sans-serif;
+    font-family: 'Poppins';
 }
 .navbar{
     background: #000000;
@@ -32,8 +32,22 @@ body{
 }
 .dropdown-menu{
     background-color: rgb(158, 148, 148);
+}
+.dropdown-menu li a{
     color: white;
 }
+.cardLevantarse{
+    transform: scale(1.1);
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+    box-shadow: 0px 10px 20px rgb(124, 125, 123);
+}
+.cardNormal{
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out;
+    box-shadow: none;
+}
+
 
 @media (max-width: 1000px) {
     .container-car {

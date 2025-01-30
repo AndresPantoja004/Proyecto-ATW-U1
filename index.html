@@ -6,10 +6,30 @@
     <title>EspeStore</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
     <script defer  src="js/bootstrap.bundle.min.js" ></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/jQueryV3.7.1.js"></script>
+    <script defer src="js/script.js" ></script>
     <script>
       $(document).ready(function() {
+          $(".card").hover(
+            function(){
+            $(this).css({
+                "transform": "scale(1.05)",
+                "transition": "transform 0.3s ease-in-out",
+                "cursor": "pointer",
+                 "box-shadow": "0px 10px 20px rgb(124, 125, 123)"
+            });
+            },
+            function(){
+                $(this).css({
+                    "transform": "scale(1)",
+                    "transition": "transform 0.3s ease-in-out",
+                    "box-shadow": "none"
+                });
+            }
+          )
+
           $("form").on("submit", function(event) {
               event.preventDefault(); // Evita que la página se recargue
               var value = $(".form-control").val().toLowerCase(); // Obtener el texto del input en minúsculas
@@ -27,9 +47,11 @@
               // Si no se encontró ninguna coincidencia, mostrar todas las tarjetas y alertar al usuario
               if (!encontrar) {
                   $(".card").show();
-                  alert("No se encontraron resultados para esta búsqueda.");
+                  alert("no se encontro nada")
               }
           });
+
+         
       });
   </script>
 </head>
@@ -38,7 +60,7 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
           <img src="img/logoEspe2.png" width="50" height="40" alt="blue">
-          <a class=" espe navbar-brand"  style="color: #27e03d; href="index.html"  >EspeStore</a>
+          <a class=" espe navbar-brand"  style="color: #27e03d; " href="index.html" >EspeStore</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -77,8 +99,8 @@
         </div>
       </nav>
 
-      <div class="container mt-3">
-        <div class="row gap-3 justify-content-center">
+      <div class="container p-4 mt-3">
+        <div class="row gap-5 justify-content-center">
             <div class="card" style="width: 18rem;">
                 <img src="img/img1.png" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -161,7 +183,7 @@
             </div>
         </div>
       </div>
-      <footer class="footer bg-black text-white d-flex align-items-center justify-content-center row p-3 text-center mt-3 row">
+      <footer class="footer bg-black text-white d-flex align-items-center justify-content-center row p-3 text-center mt-5 row">
         <div class="col d-flex flex-column gap-3 col-12 text-center d-flex align-items-center justify-content-center p-3">
           <div class="row">
             <h3 class="m-0 ">EspeFlex</h3> 
