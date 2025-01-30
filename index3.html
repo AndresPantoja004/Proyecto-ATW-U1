@@ -257,11 +257,9 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function () {
-            // Al pasar el mouse sobre la imagen
             $("#camisa").mouseenter(function () {
                 var imagen = $(this);
     
-                // Si la imagen no está agrandada, la agrandamos
                 if (!imagen.hasClass('agrandada')) {
                     imagen.addClass('agrandada').stop().animate({
                         width: '100%',  // Agrandada un poco más
@@ -270,36 +268,30 @@
                 }
             });
     
-            // Al quitar el mouse de la imagen
             $("#camisa").mouseleave(function () {
                 var imagen = $(this);
     
-                // Si la imagen está agrandada, volvemos a su tamaño original con el efecto campanita
                 if (imagen.hasClass('agrandada')) {
                     imagen.removeClass('agrandada').stop().animate({
-                        width: '100%',  // Vuelve al tamaño original
-                        height: '100%', // Vuelve al tamaño original
+                        width: '100%', 
+                        height: '100%', 
                     }, 300, 'easeOutQuad', function () {
-                        // Efecto campanita: Rebotar un poco
                         imagen.stop().animate({
-                            marginTop: '-5px',  // Subir un poco
+                            marginTop: '-5px',  
                         }, 100, 'easeInOutQuad').animate({
-                            marginTop: '5px',  // Bajar un poco
+                            marginTop: '5px',  
                         }, 100, 'easeInOutQuad').animate({
-                            marginTop: '0',  // Volver a la posición original
+                            marginTop: '0',  
                         }, 100, 'easeInOutQuad');
                     });
                 }
             });
     
-            // Funcionalidad para validar cupón al hacer pasar el mouse
             $(".Aplicar").click(function () {
                 var cupon = $(".codigo").val(); 
                 var regex = /^[1-9][0-9]{4}$/; 
     
-                // Validar el código de cupón
                 if (!regex.test(cupon)) {
-                    // mostrar error
                     $("#error-message").fadeIn("slow"); 
                 
                     // BORRAR LO INGRESADO
