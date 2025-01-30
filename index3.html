@@ -13,7 +13,7 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            height: 100px;
+           
         }
 
         button {
@@ -65,7 +65,7 @@
 
         .carrito {
             margin-top: 4px;
-            height: 226px;
+            height: auto;
         }
 
         .prod {
@@ -187,12 +187,10 @@
     </nav>
 
     <!-- modifi -->
-    <div class="container con1">
-        <div class="container">
-            <div class="row">
+    <div class="container mt-3">
+            <div class="row gap-3">
                 <form class="d-flex align-items-center gap-2">
-                    <div class="row barra col-12">
-                        <hr>
+                    <div class="row barra col-12 justify-content-between text-center align-items-center p-3">
                         <div class=" col-6 align-items-inline">
                             <label for="text">Camiseta Argentina 50 Aniversario" se ha agregado a tu carrito.</label>
                         </div>
@@ -205,7 +203,7 @@
                 </form>
                 <div class="row principal">
                     <div class="col-lg-8 col-md-12">
-                        <div class="row columna">
+                        <div class="row columna p-3">
                             <div class="col-2">
                                 <img src="img/img1.png" alt="camisa" class="img-fluid">
                             </div>
@@ -226,18 +224,17 @@
                                 <p>33.95$</p>
                             </div>
                         </div>
-                        <div class="row columna cupon align-items-inline">
-                            <div class=" col-8 ">
+                        <div class="row columna cupon align-items-inline d-flex align-items-center justify-content-between">
+                            <div class=" col-8 d-flex align-items-center">
                                 <input type="text" class="codigo" name="cupon"
-                                    style="margin-top: 20px; width: 220px; color:black " placeholder="Código de cúpon">
+                                    style="width: 220px; color:black " placeholder="Código de cúpon">
                             </div>
-                            <div class=" col-3 ">
-                                <button type="text" class="Aplicar" style="margin-top: 20px;" name="Aplicar">Aplicar el
+                            <div class=" col-3 d-flex align-items-center ">
+                                <button type="text" class="Aplicar"  name="Aplicar">Aplicar el
                                     cupón</button>
                             </div>
                         </div>
                     </div>
-
                     <div class="col-lg-4 col-md-12 order-md-last order-lg-0">
                         <div class="columnacarrito carrito p-3">
                             <h3 class="text-center">Totales del carrito</h3>
@@ -261,6 +258,7 @@
                                 name="continuarCompra">Proceder al pago</a>
                         </div>
                     </div>
+                </div>
                 </div>
             </div>
             <footer
