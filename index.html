@@ -47,7 +47,19 @@
               // Si no se encontró ninguna coincidencia, mostrar todas las tarjetas y alertar al usuario
               if (!encontrar) {
                   $(".card").show();
-                  alert("no se encontro nada")
+                  $("#notFoundModal").fadeIn(); // Mostrar el modal
+              }
+          });
+
+          // Cerrar el modal al hacer clic en el botón
+          $("#closeModal").on("click", function() {
+              $("#notFoundModal").fadeOut();
+          });
+
+          // Cerrar el modal al hacer clic fuera de la caja
+          $(".modal-overlay").on("click", function(e) {
+              if (e.target === this) {
+                  $(this).fadeOut();
               }
           });
 
@@ -181,6 +193,12 @@
                   <input type="button" class="btn btn-outline-success" value="Me interesa">
                 </div>
             </div>
+        </div>
+      </div>
+      <div style="display: none;"  id="notFoundModal" class="modal-overlay">
+        <div class="modal-content">
+            <p>Lo sentimos, pero no encontramos una camiseta relacionada con tu búsqueda.</p>
+            <button id="closeModal">Cerrar</button>
         </div>
       </div>
       <footer class="footer bg-black text-white d-flex align-items-center justify-content-center row p-3 text-center mt-5 row">
