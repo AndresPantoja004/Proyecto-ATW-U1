@@ -63,13 +63,17 @@
                   isValid = false;
               }
       
-              if (!/^[a-zA-Z\s]{1,8}$/.test(name)) {
-                  showError(document.getElementById("name"), "Max 8 caracteres.");
+              if (!/^[a-zA-Z\s]{1,10}$/.test(name)) {
+                  showError(document.getElementById("name"), "Max 10 letras.");
                   isValid = false;
               }
       
               if (!/^\d{1,2}$/.test(dorsal)) {
                   showError(document.getElementById("dorsal"), "Max 2 dígitos.");
+                  isValid = false;
+              }
+              if (isNaN(dorsal)) {
+                  showError(document.getElementById("dorsal"), "Solo números.");
                   isValid = false;
               }
       
@@ -81,8 +85,7 @@
               if (!isValid) {
                   return; 
               } else {
-                  alert("Producto añadido al carrito exitosamente.");
-                  window.location.href = "index3.html";
+                  alert("Producto añadido al carrito exitosamente.");                
               }
           });
       
@@ -96,7 +99,7 @@
               inputElement.parentElement.appendChild(errorMessage);
           }
       });
-    </script>
+    </script>
 </head>
 <body>
   <nav class="navbar navbar-expand-lg">
@@ -141,10 +144,10 @@
       <form>
           <div class="row">
               <div class="col-md-6 text-center">
-                  <img src="img/img1.png" alt="Camiseta AC Milan" class="rounded-image" width="400" height="400">
+                  <img src="https://topflex-web.com/wp-content/uploads/2024/10/Captura-de-pantalla-2024-03-22-a-las-16.46.41-300x300.png" alt="Camiseta AC Milan" class="rounded-image" width="400" height="400">
               </div>
               <div class="col-md-6">
-                  <h2 class="fw-bold">Camiseta AC Milan 22/23 3ª equipación</h2>
+                  <h2 class="fw-bold">Camiseta Azul 2° equipación Argentina Copa America 2023/2024</h2>
                   <p class="text-success fs-4 fw-bold">33,95 €</p>
                   <div class="mb-3 d-flex gap-3">
                       <div class="form-group flex-fill">
