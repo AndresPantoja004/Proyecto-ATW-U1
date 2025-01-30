@@ -13,19 +13,19 @@
           $("form").on("submit", function(event) {
               event.preventDefault(); // Evita que la página se recargue
               var value = $(".form-control").val().toLowerCase(); // Obtener el texto del input en minúsculas
-              var found = false; // Variable para verificar si hay coincidencias
+              var encontrar = false; // Variable para verificar si hay coincidencias
   
               $(".card").each(function() {
                   var cardText = $(this).find(".card-text").text().toLowerCase(); // Obtener el texto de la tarjeta
                   if (cardText.includes(value)) {
                       $(this).show(); // Mostrar si hay coincidencia
-                      found = true;  // Se encontró al menos una coincidencia
+                      encontrar = true;  // Se encontró al menos una coincidencia
                   } else {
                       $(this).hide(); // Ocultar si no hay coincidencia
                   }
               });
               // Si no se encontró ninguna coincidencia, mostrar todas las tarjetas y alertar al usuario
-              if (!found) {
+              if (!encontrar) {
                   $(".card").show();
                   alert("No se encontraron resultados para esta búsqueda.");
               }
@@ -37,8 +37,8 @@
   <!--Modifico Camila-->
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-          <img src="/img/logoEspe2.png" width="50" height="40" alt="blue">
-          <a class=" espe navbar-brand text-white" href="index.html"  >EspeStore</a>
+          <img src="img/logoEspe2.png" width="50" height="40" alt="blue">
+          <a class=" espe navbar-brand"  style="color: #27e03d; href="index.html"  >EspeStore</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
