@@ -97,7 +97,7 @@
             background-color: white;
         }
 
-        .hacerPago {
+        .CrearCuenta {
             border: solid 1px #499cde;
             background-color: #3192e1;
             color: white;
@@ -106,7 +106,7 @@
             text-align: center;
         }
 
-        .hacerPago:hover {
+        .CrearCuenta:hover {
             background-color: #0f87e9;
             border: solid 1px #388bcf;
             color: white;
@@ -156,41 +156,25 @@
     <!-- Formulario de creación de cuenta -->
     <div class="container">
         <h2>Completa los datos para crear tu cuenta</h2>
-
-        <div id="emailStep" class="step">
-            <i class="bi bi-envelope-check"></i>
-            <div class="text">
-                <strong>E-mail:</strong><br>
-                <input type="email" id="email" class="form-control" placeholder="Introduce tu correo">
+        <form id="signupForm">
+            <div class="mb-3">
+                <label for="email" class="form-label">Correo electrónico</label>
+                <input type="email" class="form-control" id="email" required>
             </div>
-        </div>
-
-        <div id="nameStep" class="step">
-            <i class="bi bi-person-check"></i>
-            <div class="text">
-                <strong>Nombre:</strong><br>
-                <input type="text" id="name" class="form-control" placeholder="Introduce tu nombre">
+            <div class="mb-3">
+                <label for="name" class="form-label">Nombre completo</label>
+                <input type="text" class="form-control" id="name" required>
             </div>
-        </div>
-
-        <div id="phoneStep" class="step">
-            <i class="bi bi-phone"></i>
-            <div class="text">
-                <strong>Teléfono:</strong><br>
-                <input type="text" id="phone" class="form-control" placeholder="Introduce tu teléfono">
+            <div class="mb-3">
+                <label for="phone" class="form-label">Teléfono</label>
+                <input type="text" class="form-control" id="phone" required>
             </div>
-            <button class="validate-button" id="validatePhoneButton">Validar</button>
-        </div>
-
-        <div id="passwordStep" class="step">
-            <i class="bi bi-lock"></i>
-            <div class="text">
-                <strong>Contraseña:</strong><br>
-                <input type="password" id="password" class="form-control" placeholder="Crea tu contraseña">
+            <div class="mb-3">
+                <label for="password" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="password" required>
             </div>
-        </div>
-        <a href="index4.html" class=" hacerPago btn btn-outline color:black" name="CrearCuenta">Crear Cuenta</a>
-        <div id="message" style="margin-top: 15px;"></div>
+            <button type="submit" class="btn btn-primary">Crear cuenta</button>
+        </form>
     </div>
 
     <footer
@@ -229,6 +213,25 @@
             </div>
         </div>
     </footer>
-</body>
+<script>
+    document.getElementById('signupForm').addEventListener('submit', function (e) {
+        e.preventDefault();
 
+        // Obtener los valores del formulario
+        const email = document.getElementById('email').value;
+        const name = document.getElementById('name').value;
+        const phone = document.getElementById('phone').value;
+        const password = document.getElementById('password').value;
+
+        // Guardar los datos en localStorage
+        localStorage.setItem('email', email);
+        localStorage.setItem('name', name);
+        localStorage.setItem('phone', phone);
+        localStorage.setItem('password', password);
+
+        // Redirigir a la página de verificación de datos
+        window.location.href = 'index4.html';
+    });
+</script>
+</body>
 </html>
