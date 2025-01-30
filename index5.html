@@ -13,7 +13,8 @@
 
     <style>
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 14px;
         }
 
         button {
@@ -111,6 +112,15 @@
             border: solid 1px #388bcf;
             color: white;
         }
+        .caja1{
+            border: solid 1px #a3abb1;
+            box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+        }
+        .caja{
+            border: solid 1px #388bcf;
+
+        }
     </style>
 </head>
 
@@ -154,24 +164,24 @@
     </nav>
 
     <!-- Formulario de creación de cuenta -->
-    <div class="container">
-        <h2>Completa los datos para crear tu cuenta</h2>
+    <div class="container caja1">
+        <h3>Completa los datos para crear tu cuenta</h3>
         <form id="signupForm">
             <div class="mb-3">
                 <label for="email" class="form-label">Correo electrónico</label>
-                <input type="email" class="form-control" id="email" required>
+                <input type="email" class="caja form-control" id="email" required>
             </div>
             <div class="mb-3">
                 <label for="name" class="form-label">Nombre completo</label>
-                <input type="text" class="form-control" id="name" required>
+                <input type="text" class="caja form-control" id="name" required>
             </div>
             <div class="mb-3">
                 <label for="phone" class="form-label">Teléfono</label>
-                <input type="text" class="form-control" id="phone" required>
+                <input type="text" class="caja form-control" id="phone" required>
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Contraseña</label>
-                <input type="password" class="form-control" id="password" required>
+                <input type="password" class="caja form-control" id="password" required>
             </div>
             <button type="submit" class="btn btn-primary">Crear cuenta</button>
         </form>
