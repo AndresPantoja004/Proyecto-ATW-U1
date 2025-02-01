@@ -175,7 +175,7 @@
                     </div>
                     <div class="col-2">
                         <p><strong>Precio</strong></p>
-                        33.95$
+                        $33.95
                     </div>
                     <div class="col-2">
                         <p><strong>Cantidad</strong></p>
@@ -183,11 +183,11 @@
                     </div>
                     <div class="col-2">
                         <p><strong>Subtotal</strong></p>
-                        33.95$
+                        $33.95
                     </div>
                 </div>
                 <div class="row columna cupon d-flex align-items-center justify-content-between flex-wrap">
-                    <div class="col-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-start">
+                    <div class="col-12 col-md-3 d-flex align-items-center justify-content-center justify-content-md-end mt-2 mt-md-0">
                         <input type="text" class="codigo w-100 w-md-auto" name="cupon" style="max-width: 200px; color:black;"
                             placeholder="Código de cupón">
                     </div>
@@ -203,7 +203,7 @@
                     <h3 class="text-center">Totales del carrito</h3>
                     <div class="d-flex justify-content-between border-bottom py-2">
                         <span>Subtotal</span>
-                        <span>33.95$</span>
+                        <span>$33.95</span>
                     </div>
                     <div class="d-flex justify-content-between border-bottom py-2">
                         <span>Envío</span>
@@ -215,9 +215,9 @@
                     </div>
                     <div class="d-flex justify-content-between border-bottom py-2">
                         <span><strong>Total</strong></span>
-                        <span><strong>33.95$</strong></span>
+                        <span><strong>$33.95</strong></span>
                     </div>
-                    <a href="index5.html" class="hacerPago btn btn-outline color:black" name="continuarCompra">Proceder al pago</a>
+                    <a href="registrarse.html" class="hacerPago btn btn-outline color:black" name="continuarCompra">Proceder al pago</a>
                 </div>
             </div>
         </div>
@@ -287,9 +287,12 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
+        //tengo que hacer que funcione la validacion del cupon y del 1 al 20 de cantidad
+        //que no permita seguir si no se ha validado
+        //que se multiplique cantidad por precio y permita hacer el calculo
+        //que traiga el precio de la camisa que sea aca y se actualice: foto camisa, precio, descripcion 
+        //que alla para elegir una ventanita si quieres iniciar sesion o registrarte
         $(document).ready(function () {
-           
-    
             $(".Aplicar").click(function () {
                 var cupon = $(".codigo").val(); 
                 var regex = /^[1-9][0-9]{4}$/; 
