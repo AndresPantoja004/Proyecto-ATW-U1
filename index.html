@@ -12,7 +12,6 @@
     <script defer src="js/script.js" ></script>
     <script >
       $(document).ready(function() {
-
           $(".card").hover(
             function(){
             $(this).css({
@@ -30,16 +29,12 @@
                 });
             }
           )
-
-        
           $("#contain-car").click(function () {
               $(this).css("position", "relative")
                     .stop()
                     .animate({ left: "-30px" }, 350)
                     .animate({ left: "0px" }, 350);
           });
-         
-
           $("form").on("submit", function(event) {
               event.preventDefault(); // Evita que la página se recargue
               var value = $(".form-control").val().toLowerCase(); // Obtener el texto del input en minúsculas

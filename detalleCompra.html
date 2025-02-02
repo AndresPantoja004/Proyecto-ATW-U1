@@ -117,6 +117,7 @@
     transition: all 0.3s ease; /* Asegura una transición suave */
 }
 
+
     </style>
 </head>
 
@@ -196,6 +197,7 @@
                     </div>
                 </div>
                 <div id="error-message">El código del cupón es inválido. Asegúrate de que tenga 5 dígitos y no comience con 0.</div>
+                <div id="banner">¡Cupón válido aplicado!<p id="cerrar">Aceptar</p> </div>
             </div>
 
             <div class="col-lg-4">
@@ -292,10 +294,12 @@
         //que se multiplique cantidad por precio y permita hacer el calculo
         //que traiga el precio de la camisa que sea aca y se actualice: foto camisa, precio, descripcion 
         //que alla para elegir una ventanita si quieres iniciar sesion o registrarte
+        //tengo que hacer que se valdie el boton de cupon y se aplique un despuesto al precio segun la cantidad
         $(document).ready(function () {
+            $("#banner").hide();
             $(".Aplicar").click(function () {
                 var cupon = $(".codigo").val(); 
-                var regex = /^[1-9][0-9]{4}$/; 
+                let regex = /^                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         [1-9][0-9]{4}$/; 
     
                 if (!regex.test(cupon)) {
                     $("#error-message").fadeIn("slow"); 
@@ -310,11 +314,13 @@
                     });
                 } else {
                     // MOSTRAR ES VALIDO
+                    $("#banner").show();
                     $("#error-message").fadeOut("slow"); 
-                    alert("¡Cupón válido aplicado!");
+                    $("#cerrar").on("click", function () {
+                    $("#banner").remove(); // elimina el banner
+            });
                 }
             });
-
                       // Cerrar el modal al hacer clic en el botón
           $("#closeModal").on("click", function() {
               $("#notFoundModal").fadeOut();
