@@ -117,7 +117,6 @@
     transition: all 0.3s ease; /* Asegura una transición suave */
 }
 
-
     </style>
 </head>
 
@@ -190,13 +189,13 @@
                 <div class="row columna cupon d-flex align-items-center justify-content-between flex-wrap">
                     <div class="col-12 col-md-3 d-flex align-items-center justify-content-center justify-content-md-end mt-2 mt-md-0">
                         <input type="text" class="codigo w-100 w-md-auto" name="cupon" style="max-width: 200px; color:black;"
-                            placeholder="Código de cupón">
+                            placeholder="Código de cupón formato: AA999">
                     </div>
                     <div class="col-12 col-md-3 d-flex align-items-center justify-content-center justify-content-md-end mt-2 mt-md-0">
                         <button type="button" class="Aplicar w-100 w-md-auto" name="Aplicar">Aplicar el cupón</button>
                     </div>
                 </div>
-                <div id="error-message">El código del cupón es inválido. Asegúrate de que tenga 5 dígitos y no comience con 0.</div>
+                <div id="error-message">El código del cupón es inválido. Asegúrate de que tenga este formato: AA999</div>
                 <div id="banner">¡Cupón válido aplicado!<p id="cerrar">Aceptar</p> </div>
             </div>
 
@@ -219,7 +218,7 @@
                         <span><strong>Total</strong></span>
                         <span><strong>$33.95</strong></span>
                     </div>
-                    <a href="registrarse.html" class="hacerPago btn btn-outline color:black" name="continuarCompra">Proceder al pago</a>
+                    <a href="registrarse.html" class="hacerPago btn btn-outline color:black" id="proceder">Proceder al pago</a>
                 </div>
             </div>
         </div>
@@ -296,16 +295,16 @@
         //que alla para elegir una ventanita si quieres iniciar sesion o registrarte
         //tengo que hacer que se valdie el boton de cupon y se aplique un despuesto al precio segun la cantidad
         $(document).ready(function () {
+            //"¡Compra uno y llévate el segundo a mitad de precio!"
+            //"¡Ahorra un 20% en tu próxima compra!"
             $("#banner").hide();
-            $(".Aplicar").click(function () {
+            $(".Aplicar" ).click(function () {
                 var cupon = $(".codigo").val(); 
-                let regex = /^                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         [1-9][0-9]{4}$/; 
-    
-                if (!regex.test(cupon)) {
-                    $("#error-message").fadeIn("slow"); 
-                
-                    // BORRAR LO INGRESADO
-                    $(".codigo").val("").focus();
+                let formatocupon = /^[A-Z]{2}\d{3}$/
+
+                if (!formatocupon.test(cupon)) {
+                    $("#error-message").fadeIn(); 
+                    $(".codigo").val("").focus(); //borra lo que ingresaste antes :D
     
                     // CSS DE MENSAJE ERROR
                     $(".codigo").css("border", "2px solid red").delay(1000).queue(function(next) {
@@ -318,7 +317,7 @@
                     $("#error-message").fadeOut("slow"); 
                     $("#cerrar").on("click", function () {
                     $("#banner").remove(); // elimina el banner
-            });
+                      });
                 }
             });
                       // Cerrar el modal al hacer clic en el botón

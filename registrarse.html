@@ -140,12 +140,14 @@
                 var nombre = $("#name").val();
                 var telefono = $("#phone").val();
                 var contraseña = $("#password").val();
+                let formatoNombre = /^[A-Za-z]{3,20} [A-Za-z]{3,20} [A-Za-z]{3,20} [A-Za-z]{3,20}/
+
                 if (correo == "" || !/\S+@\S+.\S+/.test(correo)) {
                     $("#mensaje1").fadeIn();
                     return false;
                 }else{
                     $("#mensaje1").fadeOut();
-                    if(nombre == ""){
+                    if(nombre == "" || !formatoNombre.test(nombre) ){
                         $("#mensaje2").fadeIn();
                         return false;
                 }else{ 
