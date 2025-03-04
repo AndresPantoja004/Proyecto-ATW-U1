@@ -142,7 +142,7 @@
                 var contraseña = $("#password").val();
                 let formatoNombre = /^[A-Za-z]{3,20} [A-Za-z]{3,20} [A-Za-z]{3,20} [A-Za-z]{3,20}/
 
-                if (correo == "" || !/\S+@\S+.\S+/.test(correo)) {
+                if (correo == "" || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)) {
                     $("#mensaje1").fadeIn();
                     return false;
                 }else{
@@ -244,7 +244,7 @@
                 <label for="name" class="form-label">Nombre completo</label>
                 <input type="text" class="caja form-control" id="name" class="errores"
                     placeholder="Nombres y apellidos completos" required>
-                <div id="mensaje2" class="errores">Ingrese solo letras</div>
+                <div id="mensaje2" class="errores">Ingrese sus dos nombres y sus dos apellidos, solo letras.</div>
             </div>
             <div class="mb-3">
                 <label for="phone" class="form-label">Teléfono</label>
@@ -257,6 +257,9 @@
                 <div id="mensaje4" class="errores">Ingrese una contraseña</div>
             </div>
             <button type="submit" class="btn btn-primary" id="crearcuenta">Crear cuenta</button>
+            <p>Ya tienes una cuenta? Inicia Sesión aquí.</p>
+            <button class="btn btn-success" onclick="window.location.href = 'inicioSesion.html';">Iniciar Sesión</button>
+
         </form>
     </div>
     <!-- Formulario de creación de cuenta -->
