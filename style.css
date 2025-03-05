@@ -1,5 +1,5 @@
 body{
-    font-family: sans-serif;
+    font-family: 'Quicksand', sans-serif;
 }
 .navbar{
     background: #000000;
@@ -17,7 +17,7 @@ body{
     font-weight: 700;
 }
 .rounded-image {
-    border-radius: 20px; /* Ajusta este valor para más o menos redondez */
+    border-radius: 20px; 
 }
 .home{
     color: white;
@@ -26,24 +26,93 @@ body{
     border: 1px solid rgb(60, 255, 0);
     border-radius: 10px;
     color: white;
+    position: relative;
 }
 .container-car:hover{
     cursor: pointer;
 }
 .dropdown-menu{
     background-color: rgb(158, 148, 148);
+}
+.dropdown-menu li a{
+    color: white;
+}
+.cardLevantarse{
+    transform: scale(1.1);
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+    box-shadow: 0px 10px 20px rgb(124, 125, 123);
+}
+.cardNormal{
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out;
+    box-shadow: none;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Fondo oscuro transparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 300px; 
+}
+
+#closeModal {
+    background: #27e03d;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+#closeModal2 {
+    background: #27e03d;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+.container-contactactanos span{
+    color: gray;
+}
+.container-contactactanos a{
+    text-decoration: none;
     color: white;
 }
 
+
 @media (max-width: 1000px) {
-    .container-car {
+    .container-todo-car {
       width: 20%; 
        
     }
 }
 @media (max-width: 990px) {
-    .container-car {
+    .container-todo-car {
       width: 40%; 
+
+    }
+}
+@media (max-width: 990px) {
+    .information-footer {
+      width: 100%; 
 
     }
 }

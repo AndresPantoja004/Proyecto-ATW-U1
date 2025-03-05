@@ -7,37 +7,109 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en">  
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EspeStore</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
     <script defer  src="js/bootstrap.bundle.min.js" ></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
+    <script src="js/jQueryV3.7.1.js"></script>
+    <script defer src="js/script.js" ></script>
+    <script >
       $(document).ready(function() {
+          $(".card").hover(
+            function(){
+            $(this).css({
+                "transform": "scale(1.05)",
+                "transition": "transform 0.3s ease-in-out",
+                "cursor": "pointer",
+                 "box-shadow": "0px 10px 20px rgb(124, 125, 123)"
+            });
+            },
+            function(){
+                $(this).css({
+                    "transform": "scale(1)",
+                    "transition": "transform 0.3s ease-in-out",
+                    "box-shadow": "none"
+                });
+            }
+          )
+          $("#contain-car").click(function () {
+              $(this).css("position", "relative")
+                    .stop()
+                    .animate({ left: "-30px" }, 350)
+                    .animate({ left: "0px" }, 350);
+          });
           $("form").on("submit", function(event) {
               event.preventDefault(); // Evita que la página se recargue
               var value = $(".form-control").val().toLowerCase(); // Obtener el texto del input en minúsculas
-              var found = false; // Variable para verificar si hay coincidencias
+              var encontrar = false; // Variable para verificar si hay coincidencias
   
               $(".card").each(function() {
                   var cardText = $(this).find(".card-text").text().toLowerCase(); // Obtener el texto de la tarjeta
                   if (cardText.includes(value)) {
                       $(this).show(); // Mostrar si hay coincidencia
-                      found = true;  // Se encontró al menos una coincidencia
+                      encontrar = true;  // Se encontró al menos una coincidencia
                   } else {
                       $(this).hide(); // Ocultar si no hay coincidencia
                   }
               });
               // Si no se encontró ninguna coincidencia, mostrar todas las tarjetas y alertar al usuario
-              if (!found) {
+              if (!encontrar) {
                   $(".card").show();
-                  alert("No se encontraron resultados para esta búsqueda.");
+                  $("#notFoundModal").fadeIn(); // Mostrar el modal
               }
           });
+
+          // Cerrar el modal al hacer clic en el botón
+          $("#closeModal").on("click", function() {
+              $("#notFoundModal").fadeOut();
+          });
+          // Cerrar el modal al hacer clic en el botón
+          $("#closeModal2").on("click", function() {
+              $("#notFoundModal2").fadeOut();
+          });
+
+          // Cerrar el modal al hacer clic fuera de la caja
+          $(".modal-overlay").on("click", function(e) {
+              if (e.target === this) {
+                  $(this).fadeOut();
+              }
+          });
+
+          $("#btnContact").click(function() {
+              $("#notFoundModal2").fadeIn();
+          });
+
+              // Función para filtrar tarjetas según la temporada seleccionada
+          function filtrarTarjetas(temporada) {
+            $(".card").each(function () {
+                  var cardText = $(this).find(".card-text").text();
+                  if (cardText.includes(temporada)) {
+                      $(this).show();  // Mostrar la tarjeta si coincide
+                  } else {
+                      $(this).hide();  // Ocultar la tarjeta si no coincide
+                  }
+              });
+          }
+
+          // Manejo de clics en los elementos del dropdown
+          $("#temp24").click(function () {
+              filtrarTarjetas("2024/2025");
+          });
+
+          $("#temp23").click(function () {
+              filtrarTarjetas("2023/2024");
+          });
+
+          $("#temp22").click(function () {
+              filtrarTarjetas("2022/2023");
+          });
+
+         
       });
   </script>
 </head>
@@ -45,8 +117,8 @@
   <!--Modifico Camila-->
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-          <img src="/img/logoEspe2.png" width="50" height="40" alt="blue">
-          <a class=" espe navbar-brand text-white" href="index.html"  >EspeStore</a>
+          <img src="img/logoEspe2.png" width="50" height="40" alt="blue">
+          <a class=" espe navbar-brand"  style="color: #27e03d; " href="index.html" >EspeStore</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -63,13 +135,13 @@
                   Temporadas
                 </a>
                 <ul class="dropdown-menu" >
-                  <li><a class="dropdown-item" href="#">Temporada 24-25</a></li>
-                  <li><a class="dropdown-item" href="#">Temporada 23-24</a></li>                 
-                  <li><a class="dropdown-item" href="#">Temporada 22-23</a></li>
+                  <li><a class="dropdown-item" id="temp24" href="#">Temporada 24-25</a></li>
+                  <li><a class="dropdown-item" id="temp23" href="#">Temporada 23-24</a></li>                 
+                  <li><a class="dropdown-item" id="temp22" href="#">Temporada 22-23</a></li>
                 </ul>
               </li>
             </ul>
-            <div class="container-car d-flex gap-3 justify-content-between p-2 m-2">
+            <div id="contain-car" class="container-car d-flex gap-3 justify-content-between p-2 m-2">
               <div>
                 <svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#ffffff"><path d="M19.5 22C20.3284 22 21 21.3284 21 20.5C21 19.6716 20.3284 19 19.5 19C18.6716 19 18 19.6716 18 20.5C18 21.3284 18.6716 22 19.5 22Z" fill="#ffffff" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M9.5 22C10.3284 22 11 21.3284 11 20.5C11 19.6716 10.3284 19 9.5 19C8.67157 19 8 19.6716 8 20.5C8 21.3284 8.67157 22 9.5 22Z" fill="#ffffff" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M5 4H22L20 15H7L5 4ZM5 4C4.83333 3.33333 4 2 2 2" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M20 15H7H5.23077C3.44646 15 2.5 15.7812 2.5 17C2.5 18.2188 3.44646 19 5.23077 19H19.5" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
               </div>
@@ -85,6 +157,7 @@
         </div>
       </nav>
 
+<<<<<<< HEAD:index.php
       <div class="container mt-3">
         <div class="row gap-3 justify-content-center">
           <?php foreach ($camisetas as $camiseta): ?>
@@ -101,13 +174,115 @@
               </div>
           <?php endforeach; ?>
       </div>
+=======
+      <div class="container p-4 mt-3">
+        <div class="row gap-5 justify-content-center">
+            <div class="card" style="width: 18rem;">
+                <img src="https://topflex-web.com/wp-content/uploads/2024/10/Captura-de-pantalla-2024-03-22-a-las-16.46.41-300x300.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <p class="card-text text-center h5">Camiseta Azul 2° equipación Argentina Copa america 2023/2024  </p>
+                  <span class="text-center d-flex justify-content-center">$ <p id="precioCamisa">38.99</p></span>
+                </div>
+                <div class="card-buttom justify-content-center d-flex mb-3">
+                  <a href="detalleProducto.html" class="btn btn-outline-success" >Me interesa</a>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <img src="https://topflex-web.com/wp-content/uploads/2024/10/AC-Milan-X-Koche-4th-Football-Shirt-2223-1-300x300.jpeg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <p class="card-text  text-center h5">Camiseta 1° equipación Milan 2024/2025 </p>
+                  <span class="text-center d-flex justify-content-center">33.99</span>
+                </div>
+                <div class="card-buttom justify-content-center d-flex mb-3">
+                  <input type="button" class="btn btn-outline-success" value="Me interesa" >
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <img src="https://topflex-web.com/wp-content/uploads/2024/10/Captura-de-pantalla-2024-03-22-a-las-17.15.04-300x300.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <p class="card-text  text-center h5">Camiseta negra 1° equipación Colombia Copa america 2023/2024  </p>
+                  <span class="text-center d-flex justify-content-center">33.99</span>
+                </div>
+                <div class="card-buttom justify-content-center d-flex mb-3">
+                  <input type="button" class="btn btn-outline-success" value="Me interesa">
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <img src="https://topflex-web.com/wp-content/uploads/2024/10/Captura-de-pantalla-2024-06-05-a-las-11.34.06-Photoroom-e1717745028435-1-300x300.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <p class="card-text  text-center h5">Camiseta Blanca 1° equipación Real Madrid 2024/2025  </p>
+                  <span class="text-center d-flex justify-content-center">33.99</span>
+                </div>
+                <div class="card-buttom justify-content-center d-flex mb-3">
+                  <input type="button" class="btn btn-outline-success" value="Me interesa">
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <img src="https://topflex-web.com/wp-content/uploads/2024/10/Captura-de-pantalla-2024-06-01-a-las-17.08.23-Photoroom-1-300x300.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <p class="card-text  text-center h5">Camiseta Ecuador 1° equipación Copa america 2023/2024 </p>
+                  <span class="text-center d-flex justify-content-center">33.99</span>
+                </div>
+                <div class="card-buttom justify-content-center d-flex mb-3">
+                  <input type="button" class="btn btn-outline-success" value="Me interesa">
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <img src="https://topflex-web.com/wp-content/uploads/2024/10/Captura-de-pantalla-2024-03-22-a-las-17.19.25-300x300.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <p class="card-text  text-center h5">Camiseta Mexico 1° equipación Copa america 2023/2024 </p>
+                  <span class="text-center d-flex justify-content-center">33.99</span>
+                </div>
+                <div class="card-buttom justify-content-center d-flex mb-3">
+                  <input type="button" class="btn btn-outline-success" value="Me interesa">
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <img src="https://topflex-web.com/wp-content/uploads/2024/10/Captura-de-pantalla-2024-06-01-a-las-17.13.10-Photoroom-1-300x300.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <p class="card-text  text-center h5">Camiseta Paraguay 1° equipación Copa america 2022/2023 </p>
+                  <span class="text-center d-flex justify-content-center">33.99</span>
+                </div>
+                <div class="card-buttom justify-content-center d-flex mb-3">
+                  <input type="button" class="btn btn-outline-success" value="Me interesa">
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <img src="https://topflex-web.com/wp-content/uploads/2024/10/Captura-de-pantalla-2024-07-26-a-las-3.35.26-Photoroom-300x300.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <p class="card-text  text-center h5">Camiseta Azul  1° equipación Chelsea 2024 </p>
+                  <span class="text-center d-flex justify-content-center">33.99</span>
+                </div>
+                <div class="card-buttom justify-content-center d-flex mb-3">
+                  <input type="button" class="btn btn-outline-success" value="Me interesa">
+                </div>
+            </div>
+        </div>
+>>>>>>> 4dec176df7dfde27de99ae50d0b4fa0451392cfa:index.html
       </div>
-      <footer class="footer bg-black text-white d-flex align-items-center justify-content-center row p-3 text-center mt-3 row">
-        <div class="col d-flex flex-column gap-3 col-12 text-center d-flex align-items-center justify-content-center p-3">
+      <div style="display: none;"  id="notFoundModal" class="modal-overlay">
+        <div class="modal-content">
+            <p>Lo sentimos, pero no encontramos una camiseta relacionada con tu búsqueda.</p>
+            <button id="closeModal">Cerrar</button>
+        </div>
+      </div>
+      <div style="display: none;"  id="notFoundModal2" class="modal-overlay">
+        <div class="modal-content">
+          <h3>Contactanos</h3>
+          <span>Av.Metropolitana Eloy Alfaro Km 1.5</span>
+          <span>Portoviejo, Manabí 1301050</span>
+          <span>Santo Domingo Gruas Jaramillo :o</span>
+          <span>Telefonos: +593 52-933777</span>
+          <span>virgiFueres@gmail.com </span>
+          <button id="closeModal2">Cerrar</button>
+        </div>
+      </div>
+      <footer class="row footer bg-black text-white d-flex align-items-center justify-content-center row p-3 text-center mt-5 row">
+        <div class="information-footer  d-flex flex-column gap-3 col-6  text-center d-flex align-items-center justify-content-center p-3">
           <div class="row">
             <h3 class="m-0 ">EspeFlex</h3> 
           </div>  
-          <svg width="34px" height="34px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="white"><path d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M3 16V8C3 5.23858 5.23858 3 8 3H16C18.7614 3 21 5.23858 21 8V16C21 18.7614 18.7614 21 16 21H8C5.23858 21 3 18.7614 3 16Z" stroke="white" stroke-width="1.5"></path><path d="M17.5 6.51L17.51 6.49889" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          <svg width="44px" height="44px" viewBox="0 0 24 24" stroke-width="1.5" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000"><path d="M6 4H9C9 4 9 7 12 7C15 7 15 4 15 4H18M18 11V19.4C18 19.7314 17.7314 20 17.4 20H6.6C6.26863 20 6 19.7314 6 19.4L6 11" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M18 4L22.4429 5.77717C22.7506 5.90023 22.9002 6.24942 22.7772 6.55709L21.1509 10.6228C21.0597 10.8506 20.8391 11 20.5938 11H18" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M5.99993 4L1.55701 5.77717C1.24934 5.90023 1.09969 6.24942 1.22276 6.55709L2.84906 10.6228C2.94018 10.8506 3.1608 11 3.40615 11H5.99993" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
           <div class="row">
             <span>Preguntas Frecuentes</span>
           </div>
@@ -117,14 +292,51 @@
               <span>Privacy policy</span>
             </div>
           </div>
+          <div class="d-flex d-md-none contact-sm">
+            <span id="btnContact">Contactanos</span>
+          </div>
           <div class="row payment-permit">
             <img src="img/payment-methods-2.png" alt="">
           </div>
-          <hr>
-          <div class="copyright">
-            Copyright &copy; 2024 Grupo 4 unoddjdhddhdhd#
+
+        </div>
+        <div class="cotact-container col  d-none d-md-flex flex-column gap-3 col-6 text-center  align-items-center justify-content-center p-3">
+            <h3 class="m-0" >Contactanos</h3>
+            <div class="container-contactactanos row">
+              <a>Contactos principales</a>
+              <span>Av.Metropolitana Eloy Alfaro Km 1.5</span>
+              <span>Portoviejo, Manabí 1301050</span>
+              <span>Santo Domingo</span>
+              <span>Telefonos: +593 52-933777</span>
+              <span>andrespantoja@gmail.com </span>
+              <div class="container-contactactanos gap-4 mt-3 d-flex justify-content-center">
+                <a href="">
+                  <img width="20px" src="https://tctelevision.nyc3.digitaloceanspaces.com/Noticias_wordpress/2023/10/facebook.png" alt="">
+                </a>
+                <a href="">
+                  <img width="20px" src="https://tctelevision.nyc3.digitaloceanspaces.com/Noticias_wordpress/2023/10/instagram-1.png" alt="">
+                </a>
+                <a href="">
+                  <img width="20px" src="https://tctelevision.nyc3.digitaloceanspaces.com/Noticias_wordpress/2023/10/twitter.webp" alt="">
+                </a>
+                <a href="">
+                  <img width="20px" src="https://tctelevision.nyc3.digitaloceanspaces.com/Noticias_wordpress/2023/10/youtube.png" alt="">
+                </a>
+                <a href="">
+                  <img width="20px" src="https://tctelevision.nyc3.digitaloceanspaces.com/Noticias_wordpress/2023/10/tik-tok.png" alt="">
+                </a>
+                <a href="">
+                  <img width="20px" src="https://tctelevision.nyc3.digitaloceanspaces.com/Noticias_wordpress/2023/10/threads.png" alt="">
+                </a>
+              </div>
+            </div>
+        </div>
+        <div class="row copyright">
+          <div class="col col-12">
+            Copyright &copy; 2024 Grupo #4
+
           </div>
-        </div>     
+        </div>   
       </footer>
       <script>
         document.addEventListener('DOMContentLoaded', function() {
