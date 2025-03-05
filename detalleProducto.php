@@ -1,3 +1,22 @@
+<?php
+  // Leer el contenido del archivo JSON
+  $json = file_get_contents("json/camisetas.json");
+  // Convertir el JSON en un array de PHP
+  $camisetas = json_decode($json, true);
+
+  // Obtener el ID de la camiseta
+  $id = $_GET["id"];
+  // Buscar la camiseta con el ID especificado
+  $camiseta = null;
+
+  foreach ($camisetas as $c) {
+      if ($c["id"] == $id) {
+          $camiseta = $c;
+          break;
+      }
+  }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -118,7 +137,7 @@
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
       <img src="img/logoEspe2.png" width="50" height="40" alt="blue">
-      <a class=" espe navbar-brand"  style="color: #27e03d; " href="index.html" >EspeStore</a>
+      <a class=" espe navbar-brand"  style="color: #27e03d; " href="index.php" >EspeStore</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -161,11 +180,11 @@
       <form>
           <div class="row">
               <div class="col-md-6 text-center">
-                  <img src="https://topflex-web.com/wp-content/uploads/2024/10/Captura-de-pantalla-2024-03-22-a-las-16.46.41-300x300.png" alt="Camiseta AC Milan" class="rounded-image" width="400" height="400">
+                  <img src="<?= $camiseta['imagen']; ?>" alt="Camiseta AC Milan" class="rounded-image" width="400" height="400">
               </div>
               <div class="col-md-6">
-                  <h2 class="fw-bold">Camiseta Azul 2° equipación Argentina Copa America 2023/2024</h2>
-                  <p class="text-success fs-4 fw-bold">$33,95 </p>
+                  <h2 class="fw-bold"><?= $camiseta['nombre']; ?></h2>
+                  <p class="text-success fs-4 fw-bold"><?= $camiseta['precio']; ?> </p>
                   <div class="mb-3 d-flex gap-3">
                       <div class="form-group flex-fill">
                           <label for="size" class="form-label">Talla</label>

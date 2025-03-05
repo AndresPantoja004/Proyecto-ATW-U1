@@ -118,7 +118,7 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
           <img src="img/logoEspe2.png" width="50" height="40" alt="blue">
-          <a class=" espe navbar-brand"  style="color: #27e03d; " href="index.html" >EspeStore</a>
+          <a class=" espe navbar-brand"  style="color: #27e03d; " href="index.php" >EspeStore</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -167,8 +167,9 @@
                       <span class="text-center d-flex justify-content-center">$<?= number_format($camiseta['precio'], 2); ?></span>
                   </div>
                   <div class="card-buttom justify-content-center d-flex mb-3">
-                      <a href="" class="btn btn-outline-success">Me interesa</a>
+                      <a href="/detalleProducto.php?id=<?=$camiseta['id']?>" class="btn btn-outline-success">Me interesa</a>
                   </div>
+                  <p><?= $camiseta['id'] ?></p>
               </div>
           <?php endforeach; ?>
       </div>
