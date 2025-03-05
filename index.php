@@ -1,3 +1,11 @@
+<?php
+  // Leer el contenido del archivo JSON
+  $json = file_get_contents("json/camisetas.json");
+
+  // Convertir el JSON en un array de PHP
+  $camisetas = json_decode($json, true);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,7 +74,7 @@
                 <svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#ffffff"><path d="M19.5 22C20.3284 22 21 21.3284 21 20.5C21 19.6716 20.3284 19 19.5 19C18.6716 19 18 19.6716 18 20.5C18 21.3284 18.6716 22 19.5 22Z" fill="#ffffff" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M9.5 22C10.3284 22 11 21.3284 11 20.5C11 19.6716 10.3284 19 9.5 19C8.67157 19 8 19.6716 8 20.5C8 21.3284 8.67157 22 9.5 22Z" fill="#ffffff" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M5 4H22L20 15H7L5 4ZM5 4C4.83333 3.33333 4 2 2 2" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M20 15H7H5.23077C3.44646 15 2.5 15.7812 2.5 17C2.5 18.2188 3.44646 19 5.23077 19H19.5" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
               </div>
               <div>
-                 $ <span id="totalAcumulado"> 55555</span>
+                 $ <span id="totalAcumulado"> 9999</span>
               </div>
             </div>
             <form class="d-flex" role="search">
@@ -79,87 +87,20 @@
 
       <div class="container mt-3">
         <div class="row gap-3 justify-content-center">
-            <div class="card" style="width: 18rem;">
-                <img src="img/img1.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <p class="card-text text-center h5">Camiseta Azul 2° equipación Copa america 2025  </p>
-                  <span class="text-center d-flex justify-content-center">$ <p id="precioCamisa">38.99</p></span>
-                </div>
-                <div class="card-buttom justify-content-center d-flex mb-3">
-                  <a href="index2.html" class="btn btn-outline-success" >Me interesa</a>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img src="https://topflex-web.com/wp-content/uploads/2024/10/AC-Milan-X-Koche-4th-Football-Shirt-2223-1-300x300.jpeg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <p class="card-text  text-center h5">Camiseta Blanca 1° equipación Copa america 2024 </p>
-                  <span class="text-center d-flex justify-content-center">33.99</span>
-                </div>
-                <div class="card-buttom justify-content-center d-flex mb-3">
-                  <input type="button" class="btn btn-outline-success" value="Me interesa" >
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img src="https://topflex-web.com/wp-content/uploads/2024/10/Captura-de-pantalla-2024-03-22-a-las-17.15.04-300x300.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <p class="card-text  text-center h5">Camiseta Ecuador 1° equipación Copa america 2024 </p>
-                  <span class="text-center d-flex justify-content-center">33.99</span>
-                </div>
-                <div class="card-buttom justify-content-center d-flex mb-3">
-                  <input type="button" class="btn btn-outline-success" value="Me interesa">
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img src="https://topflex-web.com/wp-content/uploads/2024/10/Captura-de-pantalla-2024-06-05-a-las-11.34.06-Photoroom-e1717745028435-1-300x300.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <p class="card-text  text-center h5">Camiseta Ecuador 1° equipación Copa america 2024 </p>
-                  <span class="text-center d-flex justify-content-center">33.99</span>
-                </div>
-                <div class="card-buttom justify-content-center d-flex mb-3">
-                  <input type="button" class="btn btn-outline-success" value="Me interesa">
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img src="https://topflex-web.com/wp-content/uploads/2024/10/Captura-de-pantalla-2024-07-26-a-las-3.35.26-Photoroom-300x300.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <p class="card-text  text-center h5">Camiseta Ecuador 1° equipación Copa america 2024 </p>
-                  <span class="text-center d-flex justify-content-center">33.99</span>
-                </div>
-                <div class="card-buttom justify-content-center d-flex mb-3">
-                  <input type="button" class="btn btn-outline-success" value="Me interesa">
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img src="https://topflex-web.com/wp-content/uploads/2024/10/Captura-de-pantalla-2024-07-26-a-las-3.35.26-Photoroom-300x300.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <p class="card-text  text-center h5">Camiseta Ecuador 1° equipación Copa america 2024 </p>
-                  <span class="text-center d-flex justify-content-center">33.99</span>
-                </div>
-                <div class="card-buttom justify-content-center d-flex mb-3">
-                  <input type="button" class="btn btn-outline-success" value="Me interesa">
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img src="https://topflex-web.com/wp-content/uploads/2024/10/Captura-de-pantalla-2024-07-26-a-las-3.35.26-Photoroom-300x300.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <p class="card-text  text-center h5">Camiseta Ecuador 1° equipación Copa america 2024 </p>
-                  <span class="text-center d-flex justify-content-center">33.99</span>
-                </div>
-                <div class="card-buttom justify-content-center d-flex mb-3">
-                  <input type="button" class="btn btn-outline-success" value="Me interesa">
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img src="https://topflex-web.com/wp-content/uploads/2024/10/Captura-de-pantalla-2024-07-26-a-las-3.35.26-Photoroom-300x300.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <p class="card-text  text-center h5">Camiseta Ecuador 1° equipación Copa america 2024 </p>
-                  <span class="text-center d-flex justify-content-center">33.99</span>
-                </div>
-                <div class="card-buttom justify-content-center d-flex mb-3">
-                  <input type="button" class="btn btn-outline-success" value="Me interesa">
-                </div>
-            </div>
-        </div>
+          <?php foreach ($camisetas as $camiseta): ?>
+              <div class="card" style="width: 18rem;">
+                  <img src="<?= $camiseta['imagen']; ?>" class="card-img-to
+                  p" alt="Imagen de <?= $camiseta['nombre']; ?>">
+                  <div class="card-body">
+                      <p class="card-text text-center h5"><?= $camiseta['nombre']; ?></p>
+                      <span class="text-center d-flex justify-content-center">$<?= number_format($camiseta['precio'], 2); ?></span>
+                  </div>
+                  <div class="card-buttom justify-content-center d-flex mb-3">
+                      <a href="" class="btn btn-outline-success">Me interesa</a>
+                  </div>
+              </div>
+          <?php endforeach; ?>
+      </div>
       </div>
       <footer class="footer bg-black text-white d-flex align-items-center justify-content-center row p-3 text-center mt-3 row">
         <div class="col d-flex flex-column gap-3 col-12 text-center d-flex align-items-center justify-content-center p-3">
@@ -197,9 +138,5 @@
                 });
         });
         </script>
-
-
-
-
 </body>
 </html>
