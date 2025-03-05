@@ -1,0 +1,22 @@
+[
+    {
+      "cupon": "AA001",
+      "nombre": "Descuento San Valentin",
+      "descuento": 10
+    },
+    {
+        "cupon": "AA002",
+      "nombre": "Descuento Día del Padre",
+      "descuento": 20
+    },
+    {
+        "cupon": "AB001",
+      "nombre": "Despuento Fin de Año",
+      "descuento": 40
+    },
+    {
+        "cupon": "AB002",
+      "nombre": "Descuento Navidad",
+      "descuento": 50  
+     }
+  ]

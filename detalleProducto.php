@@ -236,7 +236,9 @@
                       <input type="number" id="quantity" class="form-control" name="quantity" value="1" min="1" style="width: 70px;">
                       <p>Unidades</p>
                       <button type="submit" class="btn btn-primary">Añadir al carrito</button>
-                      <p class="mt-3"><a href="detalleCompra.html" class="btn btn-warning">Ver carrito</a></p>
+                      <p class="mt-3">
+                      <a href="/detalleCompra.php?id=<?=$camiseta['id']?>" class="btn btn-warning">Ver carrito</a>
+                      </p>
                     </div>
               </div>
           </div>
