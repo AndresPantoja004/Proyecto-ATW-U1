@@ -156,8 +156,6 @@
           </div>
         </div>
       </nav>
-
-<<<<<<< HEAD:index.php
       <div class="container mt-3">
         <div class="row gap-3 justify-content-center">
           <?php foreach ($camisetas as $camiseta): ?>
@@ -174,91 +172,6 @@
               </div>
           <?php endforeach; ?>
       </div>
-=======
-      <div class="container p-4 mt-3">
-        <div class="row gap-5 justify-content-center">
-            <div class="card" style="width: 18rem;">
-                <img src="https://topflex-web.com/wp-content/uploads/2024/10/Captura-de-pantalla-2024-03-22-a-las-16.46.41-300x300.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <p class="card-text text-center h5">Camiseta Azul 2° equipación Argentina Copa america 2023/2024  </p>
-                  <span class="text-center d-flex justify-content-center">$ <p id="precioCamisa">38.99</p></span>
-                </div>
-                <div class="card-buttom justify-content-center d-flex mb-3">
-                  <a href="detalleProducto.html" class="btn btn-outline-success" >Me interesa</a>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img src="https://topflex-web.com/wp-content/uploads/2024/10/AC-Milan-X-Koche-4th-Football-Shirt-2223-1-300x300.jpeg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <p class="card-text  text-center h5">Camiseta 1° equipación Milan 2024/2025 </p>
-                  <span class="text-center d-flex justify-content-center">33.99</span>
-                </div>
-                <div class="card-buttom justify-content-center d-flex mb-3">
-                  <input type="button" class="btn btn-outline-success" value="Me interesa" >
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img src="https://topflex-web.com/wp-content/uploads/2024/10/Captura-de-pantalla-2024-03-22-a-las-17.15.04-300x300.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <p class="card-text  text-center h5">Camiseta negra 1° equipación Colombia Copa america 2023/2024  </p>
-                  <span class="text-center d-flex justify-content-center">33.99</span>
-                </div>
-                <div class="card-buttom justify-content-center d-flex mb-3">
-                  <input type="button" class="btn btn-outline-success" value="Me interesa">
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img src="https://topflex-web.com/wp-content/uploads/2024/10/Captura-de-pantalla-2024-06-05-a-las-11.34.06-Photoroom-e1717745028435-1-300x300.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <p class="card-text  text-center h5">Camiseta Blanca 1° equipación Real Madrid 2024/2025  </p>
-                  <span class="text-center d-flex justify-content-center">33.99</span>
-                </div>
-                <div class="card-buttom justify-content-center d-flex mb-3">
-                  <input type="button" class="btn btn-outline-success" value="Me interesa">
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img src="https://topflex-web.com/wp-content/uploads/2024/10/Captura-de-pantalla-2024-06-01-a-las-17.08.23-Photoroom-1-300x300.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <p class="card-text  text-center h5">Camiseta Ecuador 1° equipación Copa america 2023/2024 </p>
-                  <span class="text-center d-flex justify-content-center">33.99</span>
-                </div>
-                <div class="card-buttom justify-content-center d-flex mb-3">
-                  <input type="button" class="btn btn-outline-success" value="Me interesa">
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img src="https://topflex-web.com/wp-content/uploads/2024/10/Captura-de-pantalla-2024-03-22-a-las-17.19.25-300x300.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <p class="card-text  text-center h5">Camiseta Mexico 1° equipación Copa america 2023/2024 </p>
-                  <span class="text-center d-flex justify-content-center">33.99</span>
-                </div>
-                <div class="card-buttom justify-content-center d-flex mb-3">
-                  <input type="button" class="btn btn-outline-success" value="Me interesa">
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img src="https://topflex-web.com/wp-content/uploads/2024/10/Captura-de-pantalla-2024-06-01-a-las-17.13.10-Photoroom-1-300x300.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <p class="card-text  text-center h5">Camiseta Paraguay 1° equipación Copa america 2022/2023 </p>
-                  <span class="text-center d-flex justify-content-center">33.99</span>
-                </div>
-                <div class="card-buttom justify-content-center d-flex mb-3">
-                  <input type="button" class="btn btn-outline-success" value="Me interesa">
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img src="https://topflex-web.com/wp-content/uploads/2024/10/Captura-de-pantalla-2024-07-26-a-las-3.35.26-Photoroom-300x300.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <p class="card-text  text-center h5">Camiseta Azul  1° equipación Chelsea 2024 </p>
-                  <span class="text-center d-flex justify-content-center">33.99</span>
-                </div>
-                <div class="card-buttom justify-content-center d-flex mb-3">
-                  <input type="button" class="btn btn-outline-success" value="Me interesa">
-                </div>
-            </div>
-        </div>
->>>>>>> 4dec176df7dfde27de99ae50d0b4fa0451392cfa:index.html
       </div>
       <div style="display: none;"  id="notFoundModal" class="modal-overlay">
         <div class="modal-content">
