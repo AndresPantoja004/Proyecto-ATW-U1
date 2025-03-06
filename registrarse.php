@@ -21,7 +21,7 @@
         button {
             border-radius: 4px;
         }
-
+ 
         button:hover {
             border: 1px solid #ccc;
         }
