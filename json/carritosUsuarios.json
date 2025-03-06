@@ -1,0 +1,9 @@
+[
+    {
+        "usuario": "Andres2004",
+        "id_camiseta": "SDSDA",
+        "cantidad": 2,
+        "precio": 20,
+        "vendido": false
+    }
+]

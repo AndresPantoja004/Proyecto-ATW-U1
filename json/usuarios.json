@@ -5,5 +5,12 @@
         "nombre": "Andres David Pantoja Chavez",
         "telefono": "+593 96 963 2415",
         "password": "$2y$10$ztE\/vfYW0H3vkTNU.fRPg.GlTL7yG6QuMXWvJN.5OUNK8EhlV0eDa"
+    },
+    {
+        "usuario": "Gisella2025",
+        "email": "gisellasalda1234@gmail.com",
+        "nombre": "Gissella Camila Saldarrega Obando",
+        "telefono": "+593 96 963 2416",
+        "password": "$2y$10$kgFjBrlrTIvGmrLNdIlkFOKWzHt1GlbjkDUGRGliYcWHM0hETuQZe"
     }
 ]
