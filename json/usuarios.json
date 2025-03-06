@@ -19,5 +19,12 @@
         "nombre": "camila antonela obando buitron",
         "telefono": "+593 98 372 8242",
         "password": "$2y$10$O8yuZ6z2LegCKiXeKUesuu9igPbDgsJFdC1xjVfxaKo.XQAFTFVj6"
+    },
+    {
+        "usuario": "camila10",
+        "email": "caobando10@espe.edu.ec",
+        "nombre": "Camila Obando BGT BGTR",
+        "telefono": "+593 98 372 8242",
+        "password": "$2y$10$hiVcs0cDgyrS\/X8p1oFwZO.Cgl5VyauAl\/cKVAcvWYSMTSfoDgvqm"
     }
 ]

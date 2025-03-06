@@ -383,39 +383,40 @@ $usuarioLogueado = isset($_SESSION['usuario']);  // Esto verifica si la variable
 
 <script>
     function aplicarCupon() {
-        let codigoCupon = document.querySelector(".codigo").value.trim();
-        
-        if (codigoCupon === "") {
-            document.getElementById("error-message").innerText = "Ingrese un código de cupón.";
-            document.getElementById("error-message").style.display = "block";
-            return;
-        }
-
-        fetch("validar_cupon.php", {
-            method: "POST",
-            body: new URLSearchParams({ cupon: codigoCupon }),
-            headers: { "Content-Type": "application/x-www-form-urlencoded" }
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.valido) {
-                const cantidadInput = document.querySelector("input[type='number']");
-                let cantidad = parseInt(cantidadInput.value)
-                let descuentoPorcentaje = data.descuento; // Ejemplo: 20
-                let precioOriginal = parseFloat(<?= $camiseta['precio'] ?>)* cantidad;
-                let descuento = (precioOriginal * descuentoPorcentaje) / 100;
-                let precioFinal = precioOriginal - descuento;
-
-                document.getElementById("descuento").innerText = -${descuentoPorcentaje}%;
-                document.getElementById("total").innerText = $${precioFinal.toFixed(2)};
-                document.getElementById("error-message").style.display = "none";
-            } else {
-                document.getElementById("error-message").innerText = "Cupón inválido o expirado.";
-                document.getElementById("error-message").style.display = "block";
-            }
-        })
-        .catch(error => console.error("Error en la validación del cupón:", error));
+    let codigoCupon = document.querySelector(".codigo").value.trim();
+    
+    if (codigoCupon === "") {
+        document.getElementById("error-message").innerText = "Ingrese un código de cupón.";
+        document.getElementById("error-message").style.display = "block";
+        return;
     }
+
+    fetch("validar_cupon.php", {
+        method: "POST",
+        body: new URLSearchParams({ cupon: codigoCupon }),
+        headers: { "Content-Type": "application/x-www-form-urlencoded" }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.valido) {
+            const cantidadInput = document.querySelector("input[type='number']");
+            let cantidad = parseInt(cantidadInput.value);
+            let descuentoPorcentaje = data.descuento; // Ejemplo: 20
+            let precioOriginal = parseFloat(<?= $camiseta['precio'] ?>) * cantidad;
+            let descuento = (precioOriginal * descuentoPorcentaje) / 100;
+            let precioFinal = precioOriginal - descuento;
+
+            document.getElementById("descuento").innerText = `-${descuentoPorcentaje}%`;
+            document.getElementById("total").innerText = `$${precioFinal.toFixed(2)}`;
+            document.getElementById("error-message").style.display = "none";
+        } else {
+            document.getElementById("error-message").innerText = "Cupón inválido o expirado.";
+            document.getElementById("error-message").style.display = "block";
+        }
+    })
+    .catch(error => console.error("Error en la validación del cupón:", error));
+}
+
 </script>
 </body>
 

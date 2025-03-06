@@ -38,5 +38,13 @@
         "precio": "38.99",
         "imagen": "https:\/\/topflex-web.com\/wp-content\/uploads\/2024\/10\/Captura-de-pantalla-2024-03-22-a-las-16.46.41-300x300.png",
         "vendido": false
+    },
+    {
+        "usuario": "camila9",
+        "idCamiseta": "1001-2025",
+        "nombre": "Camiseta Azul 2\u00b0 equipaci\u00f3n Copa America 2025",
+        "precio": "38.99",
+        "imagen": "https:\/\/topflex-web.com\/wp-content\/uploads\/2024\/10\/Captura-de-pantalla-2024-03-22-a-las-16.46.41-300x300.png",
+        "vendido": false
     }
 ]
