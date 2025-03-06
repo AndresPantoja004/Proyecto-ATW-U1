@@ -152,16 +152,16 @@
             <a class="nav-link active" style="color: white;" aria-current="page" href="#">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" style="color: white;" >Ofertas</a>
+            <a class="nav-link" href="#" style="color: white;" >Ofertass</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" style="color: white;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Temporadas
             </a>
             <ul class="dropdown-menu" >
-              <li><a class="dropdown-item" href="#">Temporadas 24-25</a></li>
+              <li><a class="dropdown-item" href="#">Temporada 24-25</a></li>
               <li><a class="dropdown-item" href="#">Temporada 23-24</a></li>                 
-              <li><a class="dropdown-item" href="#">Temporada 22-23</a></li>
+              <li><a class="dropdown-item" href="#">Temporadaas 22-23</a></li>
             </ul>
           </li>
         </ul>
