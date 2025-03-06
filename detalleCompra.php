@@ -19,47 +19,10 @@ if ($id !== null) {
         }
     }
 }
-//                 CUPONES
-$cupones_json = file_get_contents("json/cupones.json");
-$cupones = json_decode($cupones_json, true);
 
-$codigo_cupon = isset($_GET["cupon"]) ? $_GET["cupon"] : null;
-$descuento_aplicado = 0;
-$mensaje = "";
 
-// Verificar si el código del cupón es válido
-if ($codigo_cupon) {
-    $es_valido = false;
-    foreach ($cupones as $cupon) {
-        if ($cupon["codigo"] == $codigo_cupon) {
-            $es_valido = true;
-            $descuento_aplicado = $cupon["descuento"];
-            $mensaje = "¡Cupón válido aplicado!";
-            break;
-        }
-    }
-
-    if (!$es_valido) {
-        $mensaje = "El código del cupón es inválido. Asegúrate de que tenga este formato: AA999";
-    }
-}
-//calculo de lo del cupon 
-$cantidad = isset($_GET['cantidad']) ? $_GET['cantidad'] : 1;
-$subtotal = $camiseta ? $camiseta['descuento'] * $cantidad : 0;
-
-// Calcular el total con descuento aplicado
-$total_con_descuento = $subtotal - ($descuento_aplicado * $cantidad);
-if ($total_con_descuento < 0) {
-    $total_con_descuento = 0; // Evitar que el total sea negativo
-}
-
-if ($codigo_cupon && !preg_match('/^[A-Z]{2}\d{3}$/', $codigo_cupon)) {
-    $mensaje = "El código del cupón debe seguir el formato AA999.";
-}
-// Calcular el precio final con descuento
-$precio_final = $camiseta ? $camiseta['precio'] - $descuento_aplicado : 0;
-    // Verificar si el usuario está logueado
-    $usuarioLogueado = isset($_SESSION['usuario']);  // Esto verifica si la variable de sesión 'usuario' existe
+// Verificar si el usuario está logueado
+$usuarioLogueado = isset($_SESSION['usuario']);  // Esto verifica si la variable de sesión 'usuario' existe
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -265,7 +228,7 @@ $precio_final = $camiseta ? $camiseta['precio'] - $descuento_aplicado : 0;
                     </div>
                     <div class="col-2">
                         <p><strong>Subtotal</strong></p>
-                        <?= "$" . number_format($subtotal, 2); ?>
+                        <p id="subtotalP"><?= "$" . number_format($camiseta['precio'], 2); ?></p>
                     </div>
 
 
@@ -274,7 +237,7 @@ $precio_final = $camiseta ? $camiseta['precio'] - $descuento_aplicado : 0;
                 <!-- Cupon -->
                 <div class="row columna cupon d-flex align-items-center justify-content-between flex-wrap">
                     <div class="col-12 col-md-3 d-flex align-items-center justify-content-center justify-content-md-end mt-2 mt-md-0">
-                        <input type="text" class="codigo w-100 w-md-auto" name="cupon" value="<?= $codigo_cupon ?>" style="max-width: 200px; color:black;" placeholder="Código de cupón formato: AA999">
+                        <input type="text" class="codigo w-100 w-md-auto" name="cupon" value="" style="max-width: 200px; color:black;" placeholder="Código de cupón formato: AA999">
                     </div>
                     <div class="col-12 col-md-3 d-flex align-items-center justify-content-center justify-content-md-end mt-2 mt-md-0">
                         <button type="button" class="Aplicar w-100 w-md-auto" name="Aplicar" onclick="aplicarCupon()">Aplicar el cupón</button>
@@ -282,7 +245,7 @@ $precio_final = $camiseta ? $camiseta['precio'] - $descuento_aplicado : 0;
                 </div>
 
                 <!-- Mensaje del cupón -->
-                <div id="error-message" style="display: <?= $mensaje ? 'block' : 'none'; ?>"><?= $mensaje; ?></div>
+                <div id="error-message" style="display: none"></div>
             </div>
 
             <div class="col-lg-4">
@@ -290,7 +253,7 @@ $precio_final = $camiseta ? $camiseta['precio'] - $descuento_aplicado : 0;
                     <h3 class="text-center">Totales del carrito</h3>
                     <div class="d-flex justify-content-between border-bottom py-2">
                         <span>Subtotal</span>
-                        <span>$33.95</span>
+                        <span>$<?= number_format($camiseta['precio'], 2)?></span>
                     </div>
                     <div class="d-flex justify-content-between border-bottom py-2">
                         <span>Envío</span>
@@ -301,47 +264,23 @@ $precio_final = $camiseta ? $camiseta['precio'] - $descuento_aplicado : 0;
                         <span>Santo Domingo</span>
                     </div>
                     <div class="d-flex justify-content-between border-bottom py-2">
-                        <span>Subtotal</span>
-                        <span id="subtotal">$<?= number_format($subtotal, 2) ?></span>
+                        <span>Iva</span>
+                        <span id="subtotal">15%</span>
                     </div>
                     <div class="d-flex justify-content-between border-bottom py-2">
                         <span>Descuento</span>
-                        <span id="descuento">-$<?= number_format($descuento_aplicado * $cantidad, 2) ?></span>
+                        <span id="descuento"></span>
                     </div>
                     <div class="d-flex justify-content-between border-bottom py-2">
                         <span>Total</span>
-                        <span id="total"><strong>$<?= number_format($total_con_descuento, 2) ?></strong></span>
+                        <span id="total"><strong></strong></span>
                     </div>
                     <a href="registrarse.php" class="hacerPago btn btn-outline color:black" id="proceder">Proceder al pago</a>
                 </div>
             </div>
         </div>
     </div>
-<?php
-        $cupones_json = file_get_contents("json/cupones.json");
-        $cupones = json_decode($cupones_json, true);
 
-        $codigo_cupon = isset($_GET["cupon"]) ? $_GET["cupon"] : null;
-
-        $response = [
-            'valido' => false,
-            'descuento' => 0,
-            'mensaje' => 'El código del cupón es inválido.',
-        ];
-
-        if ($codigo_cupon) {
-            foreach ($cupones as $cupon) {
-                if ($cupon["id"] == $codigo_cupon) {
-                    $response['valido'] = true;
-                    $response['descuento'] = $cupon['precio'];
-                    $response['mensaje'] = '¡Cupón válido aplicado!';
-                    break;
-                }
-            }
-        }
-
-        echo json_encode($response);
-        ?>
 
     <footer class="row footer bg-black text-white d-flex align-items-center justify-content-center row p-3 text-center mt-5 row">
         <div class="information-footer  d-flex flex-column gap-3 col-6  text-center d-flex align-items-center justify-content-center p-3">
@@ -408,71 +347,76 @@ $precio_final = $camiseta ? $camiseta['precio'] - $descuento_aplicado : 0;
             </div>
         </div>
     </footer>
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        //tengo que hacer que funcione la validacion del cupon y del 1 al 20 de cantidad
-        //que no permita seguir si no se ha validado
-        //que se multiplique cantidad por precio y permita hacer el calculo
-        //que traiga el precio de la camisa que sea aca y se actualice: foto camisa, precio, descripcion 
-        //que alla para elegir una ventanita si quieres iniciar sesion o registrarte
-        //tengo que hacer que se valdie el boton de cupon y se aplique un despuesto al precio segun la cantidad
-        function aplicarCupon() {
-            var cupon = document.querySelector('input[name="cupon"]').value;
-            if (!cupon) {
-                document.getElementById('error-message').innerText = 'Por favor ingresa un código de cupón.';
-                document.getElementById('error-message').style.display = 'block';
-            } else {
-                // Aquí va la lógica del cupón...
+        document.addEventListener("DOMContentLoaded", function () {
+            const cantidadInput = document.querySelector("input[type='number']");
+            const precioElemento = document.querySelector(".text-success.fs-4.fw-bold");
+            const subtotalElemento = document.querySelector(".d-flex.justify-content-between.border-bottom.py-2 span:nth-child(2)");
+            const totalElemento = document.getElementById("total");
+
+            if (cantidadInput && precioElemento && subtotalElemento && totalElemento) {
+                // Obtener el precio inicial desde el texto
+                let precioUnitario = parseFloat(precioElemento.innerText.replace("$", ""));
+
+                cantidadInput.addEventListener("input", function () {
+                    let cantidad = parseInt(cantidadInput.value);
+
+                    // Validar que la cantidad sea un número válido
+                    if (isNaN(cantidad) || cantidad < 1) {
+                        cantidad = 1;
+                        cantidadInput.value = 1;
+                    }
+
+                    // Calcular subtotal
+                    let subtotal = precioUnitario * cantidad;
+                    subtotalElemento.innerText = "$" + subtotal.toFixed(2);
+                    $("#subtotalP").text("$" + subtotal.toFixed(2));
+
+                    // Calcular total con IVA (15%)
+                    let total = subtotal * 1.15;
+                    totalElemento.innerHTML = "<strong>$" + total.toFixed(2) + "</strong>";
+                });
             }
-        }
-        $(document).ready(function() {
-            //"¡Compra uno y llévate el segundo a mitad de precio!"
-            //"¡Ahorra un 20% en tu próxima compra!"
-            $("#banner").hide();
-            $(".Aplicar").click(function() {
-                var cupon = $(".codigo").val();
-                let formatocupon = /^[A-Z]{2}\d{3}$/
-
-                if (!formatocupon.test(cupon)) {
-                    $("#error-message").fadeIn();
-                    $(".codigo").val("").focus(); //borra lo que ingresaste antes :D
-
-                    // CSS DE MENSAJE ERROR
-                    $(".codigo").css("border", "2px solid red").delay(1000).queue(function(next) {
-                        $(this).css("border", "1px solid rgb(255, 255, 175)");
-                        next();
-                    });
-                } else {
-                    // MOSTRAR ES VALIDO
-                    $("#banner").show();
-                    $("#error-message").fadeOut("slow");
-                    $("#cerrar").on("click", function() {
-                        $("#banner").remove(); // elimina el banner
-                    });
-                }
-            });
-            // Cerrar el modal al hacer clic en el botón
-            $("#closeModal").on("click", function() {
-                $("#notFoundModal").fadeOut();
-            });
-            // Cerrar el modal al hacer clic en el botón
-            $("#closeModal2").on("click", function() {
-                $("#notFoundModal2").fadeOut();
-            });
-
-            // Cerrar el modal al hacer clic fuera de la caja
-            $(".modal-overlay").on("click", function(e) {
-                if (e.target === this) {
-                    $(this).fadeOut();
-                }
-            });
-
-            $("#btnContact").click(function() {
-                $("#notFoundModal2").fadeIn();
-            });
         });
     </script>
+
+<script>
+    function aplicarCupon() {
+        let codigoCupon = document.querySelector(".codigo").value.trim();
+        
+        if (codigoCupon === "") {
+            document.getElementById("error-message").innerText = "Ingrese un código de cupón.";
+            document.getElementById("error-message").style.display = "block";
+            return;
+        }
+
+        fetch("validar_cupon.php", {
+            method: "POST",
+            body: new URLSearchParams({ cupon: codigoCupon }),
+            headers: { "Content-Type": "application/x-www-form-urlencoded" }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.valido) {
+                const cantidadInput = document.querySelector("input[type='number']");
+                let cantidad = parseInt(cantidadInput.value)
+                let descuentoPorcentaje = data.descuento; // Ejemplo: 20
+                let precioOriginal = parseFloat(<?= $camiseta['precio'] ?>)* cantidad;
+                let descuento = (precioOriginal * descuentoPorcentaje) / 100;
+                let precioFinal = precioOriginal - descuento;
+
+                document.getElementById("descuento").innerText = `-${descuentoPorcentaje}%`;
+                document.getElementById("total").innerText = `$${precioFinal.toFixed(2)}`;
+                document.getElementById("error-message").style.display = "none";
+            } else {
+                document.getElementById("error-message").innerText = "Cupón inválido o expirado.";
+                document.getElementById("error-message").style.display = "block";
+            }
+        })
+        .catch(error => console.error("Error en la validación del cupón:", error));
+    }
+</script>
 </body>
 
 </html>

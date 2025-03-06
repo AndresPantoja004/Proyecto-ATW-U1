@@ -1,9 +1,14 @@
 [
     {
-        "usuario": "Andres2004",
-        "id_camiseta": "SDSDA",
-        "cantidad": 2,
-        "precio": 20,
+        "usuario": "Gisella2025",
+        "idCamiseta": "1001-2024",
+        "precio": 33.99,
+        "vendido": false
+    },
+    {
+        "usuario": "Gisella2025",
+        "idCamiseta": "1002-2024",
+        "precio": 33.99,
         "vendido": false
     }
 ]

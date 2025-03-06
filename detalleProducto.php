@@ -19,6 +19,39 @@
         }
     }
 
+    
+        // Ruta del archivo JSON
+        $archivoCarrito = "json/carritosUsuarios.json";
+
+        // Leer contenido actual del carrito
+        $carrito = file_exists($archivoCarrito) ? json_decode(file_get_contents($archivoCarrito), true) : [];
+
+        // Verificar si el ítem ya está en el carrito
+        $existe = false;
+        foreach ($carrito as $item) {
+            if ($item["usuario"] == $_SESSION['usuario'] && $item["idCamiseta"] == $camiseta["id"]) {
+                $existe = true;
+                break;
+            }else{
+                $existe = false;
+            }
+        }
+
+        // Si no existe, agregarlo
+        if (!$existe) {
+            $nuevoItem = [
+                "usuario" => $_SESSION['usuario'],
+                "idCamiseta" => $camiseta["id"],
+                "precio" => $camiseta["precio"],
+                "vendido" => false
+            ];
+
+            $carrito[] = $nuevoItem;
+
+            // Guardar el carrito actualizado en el archivo JSON
+            file_put_contents($archivoCarrito, json_encode($carrito, JSON_PRETTY_PRINT));
+        }
+
     // Verificar si el usuario está logueado
     $usuarioLogueado = isset($_SESSION['usuario']);  // Esto verifica si la variable de sesión 'usuario' existe
 ?>
@@ -61,6 +94,7 @@
 
     </style>
     <script defer src="js/jQueryV3.7.1.js"></script>
+    
     <script>
       document.addEventListener("DOMContentLoaded", function () {
           const addToCartButton = document.querySelector(".btn-primary");
@@ -248,7 +282,7 @@
                     <div class="d-flex align-items-center gap-3">
                       <input type="number" id="quantity" class="form-control" name="quantity" value="1" min="1" style="width: 70px;">
                       <p>Unidades</p>
-                      <button type="submit" class="btn btn-primary">Añadir al carrito</button>
+                      <button type="button" class="btn btn-primary" id="addToCartBtn">Añadir al carrito</button>
                       <p class="mt-3">
                       <a href="/detalleCompra.php?id=<?=$camiseta['id']?>" class="btn btn-warning">Ver carrito</a>
                       </p>
@@ -319,5 +353,30 @@
     </div>
   </div>   
 </footer>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+      const addToCartButton = document.getElementById("addToCartBtn");
+
+      addToCartButton.addEventListener("click", function () {
+          const id = "<?= $camiseta['id']; ?>";  
+          const precio = "<?= $camiseta['precio']; ?>"; 
+
+          fetch("", {
+              method: "POST",
+              headers: { "Content-Type": "application/x-www-form-urlencoded" },
+              body: `id=${id}&precio=${precio}`
+          })
+          .then(response => response.json())
+          .then(data => {
+              if (data.success) {
+                  alert("Producto añadido al carrito.");
+              } else {
+                  alert("Error: " + data.error);
+              }
+          })
+          .catch(error => console.error("Error:", error));
+      });
+  });
+</script>
 </body>
 </html>
