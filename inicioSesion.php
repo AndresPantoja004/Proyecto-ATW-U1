@@ -1,3 +1,45 @@
+<?php
+    session_start(); // Iniciar sesión
+
+    // Leer usuarios desde usuarios.json
+    $usuarios_json = file_get_contents("json/usuarios.json");
+    $usuarios = json_decode($usuarios_json, true);
+
+    // Verificar si el usuario ya ha iniciado sesión
+    if (isset($_SESSION['usuario'])) {
+        header("Location: index.php"); // Redirige al index si ya está logueado
+        exit();
+    }
+
+    // Procesar formulario de inicio de sesión
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        $usuario = $_POST["usuario"];  // Corregido para coincidir con el formulario
+        $password = $_POST["password"];
+        
+        $usuario_encontrado = false;
+
+        // Buscar el usuario en el array
+        foreach ($usuarios as $user) {
+            if ($user['usuario'] === $usuario) {
+                echo "Usuario encontrado";
+                // Comparar la contraseña con la almacenada
+                if (password_verify($password, $user["password"])) {
+                    $_SESSION['usuario'] = $usuario; // Guarda el usuario en la sesión
+                    header("Location: index.php"); // Redirige al índice
+                    exit();
+                } else {
+                    $error = "Contraseña incorrecta";
+                }
+                $usuario_encontrado = true;
+                break;
+            }
+        }
+
+        if (!$usuario_encontrado) {
+            $error = "Usuario no encontrado";
+        }
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -219,32 +261,33 @@
             </div>
         </div>
     </nav>
-    <!-- Formulario de creación de cuenta -->
+
+    <!-- Formulario de inicio de sesión o bienvenida -->
     <div class="container caja1">
-
-        <h3>Completa los datos para iniciar sesión</h3>
-        <form id="signupForm">
-            <div class="mb-3">
-                <label for="email" class="form-label">Correo electrónico</label>
-                <input type="text" class="caja form-control" id="email" placeholder="nombredeusuario@dominio.com"
-                    required>
-                <div id="mensaje1" class="errores">Ingrese el correo guardado en este formato: nombredeusuario@dominio.com</div>
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Contraseña</label>
-                <input type="password" class="caja form-control" id="password" required>
-                <div id="mensaje4" class="errores">Contraseña incorrecta</div>
-            </div>
-            <button class="btn btn-primary" onclick="window.location.href = 'registrarse.html';">Crear cuenta</button>
-            <button type="submit" id="crearcuenta" class="btn btn-success">Iniciar Sesión</button>
-        </form>
-
+        <?php if (isset($_SESSION['usuario'])): ?>
+            <h3>Bienvenido, <?= htmlspecialchars($_SESSION['usuario']) ?>!</h3>
+            <a href="cerrarSesion.php" class="btn btn-danger">Cerrar Sesión</a>
+        <?php else: ?>
+            <h3>Completa los datos para iniciar sesión</h3>
+            <?php if (isset($error)) echo "<p style='color:red;'>$error</p>"; ?>
+            <form id="loginForm" method="post">
+                <div class="mb-3">
+                    <label for="usuario" class="form-label">Usuario</label>
+                    <input type="text" class="caja form-control" name="usuario" id="usuario" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <input type="password" class="caja form-control" name="password" id="password" required>
+                </div>
+                <input type="submit" class="btn btn-success" value="Iniciar Sesión">
+            </form>
+            <a href="registrarse.php" class="btn btn-primary">Crear cuenta</a>
+        <?php endif; ?>
     </div>
-    <!-- Formulario de creación de cuenta -->
+    <!-- Footer -->
     <footer
         class="row footer bg-black text-white d-flex align-items-center justify-content-center row p-3 text-center mt-5 row">
-        <div
-            class="information-footer  d-flex flex-column gap-3 col-6  text-center d-flex align-items-center justify-content-center p-3">
+        <div class="information-footer d-flex flex-column gap-3 col-6 text-center d-flex align-items-center justify-content-center p-3">
             <div class="row">
                 <h3 class="m-0 ">EspeFlex</h3>
             </div>
@@ -276,56 +319,6 @@
                 <img src="img/payment-methods-2.png" alt="">
             </div>
         </div>
-        <div
-            class="cotact-container col  d-none d-md-flex flex-column gap-3 col-6 text-center  align-items-center justify-content-center p-3">
-            <h3 class="m-0">Contactanos</h3>
-            <div class="container-contactactanos row">
-                <a>Contactos principales</a>
-                <span>Av.Metropolitana Eloy Alfaro Km 1.5</span>
-                <span>Portoviejo, Manabí 1301050</span>
-                <span>Santo Domingo</span>
-                <span>Telefonos: +593 52-933777</span>
-                <span>andrespantoja@gmail.com </span>
-                <div class="container-contactactanos gap-4 mt-3 d-flex justify-content-center">
-                    <a href="">
-                        <img width="20px"
-                            src="https://tctelevision.nyc3.digitaloceanspaces.com/Noticias_wordpress/2023/10/facebook.png"
-                            alt="">
-                    </a>
-                    <a href="">
-                        <img width="20px"
-                            src="https://tctelevision.nyc3.digitaloceanspaces.com/Noticias_wordpress/2023/10/instagram-1.png"
-                            alt="">
-                    </a>
-                    <a href="">
-                        <img width="20px"
-                            src="https://tctelevision.nyc3.digitaloceanspaces.com/Noticias_wordpress/2023/10/twitter.webp"
-                            alt="">
-                    </a>
-                    <a href="">
-                        <img width="20px"
-                            src="https://tctelevision.nyc3.digitaloceanspaces.com/Noticias_wordpress/2023/10/youtube.png"
-                            alt="">
-                    </a>
-                    <a href="">
-                        <img width="20px"
-                            src="https://tctelevision.nyc3.digitaloceanspaces.com/Noticias_wordpress/2023/10/tik-tok.png"
-                            alt="">
-                    </a>
-                    <a href="">
-                        <img width="20px"
-                            src="https://tctelevision.nyc3.digitaloceanspaces.com/Noticias_wordpress/2023/10/threads.png"
-                            alt="">
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="row copyright">
-            <div class="col col-12">
-                Copyright &copy; 2024 Grupo #4
-
-            </div>
-        </div>
     </footer>
     <script>
         $("#mensajeValidacion").hide();
@@ -338,7 +331,7 @@
             localStorage.setItem('email', email);
             localStorage.setItem('password', password);
             // Redirigir a la página de verificación de datos
-            window.location.href = 'verificacionRegistrado.html';
+            window.location.href = 'registrarse.php';
             $(function () { // Cerrar el modal al hacer clic en el botón 
                 $("#closeModal").on("click", function () {
                     $("#notFoundModal").fadeOut();

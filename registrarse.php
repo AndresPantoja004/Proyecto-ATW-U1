@@ -233,32 +233,37 @@
     <!-- Formulario de creación de cuenta -->
     <div class="container caja1">
         <h3>Completa los datos para crear tu cuenta</h3>
-        <form id="signupForm">
+        <form id="signupForm" method="post">
             <div class="mb-3">
                 <label for="email" class="form-label">Correo electrónico</label>
-                <input type="text" class="caja form-control" id="email" placeholder="nombredeusuario@dominio.com"
+                <input type="text" class="caja form-control" name="email" id="email" placeholder="nombredeusuario@dominio.com"
                     required>
                 <div id="mensaje1" class="errores">Ingrese el correo en este formato: nombredeusuario@dominio.com</div>
             </div>
             <div class="mb-3">
                 <label for="name" class="form-label">Nombre completo</label>
-                <input type="text" class="caja form-control" id="name" class="errores"
+                <input type="text" class="caja form-control" name="name" id="name" class="errores"
                     placeholder="Nombres y apellidos completos" required>
                 <div id="mensaje2" class="errores">Ingrese sus dos nombres y sus dos apellidos, solo letras.</div>
             </div>
             <div class="mb-3">
+                <label for="user" class="form-label">Nombre de usuario</label>
+                <input type="text" class="caja form-control" name="user" id="user" placeholder="Elige tu nombre de usuario" required>
+                <div id="mensajeUsuario" class="errores">El usuario debe ser alfanumérico y de 3 a 15 caracteres</div>
+            </div>
+            <div class="mb-3">
                 <label for="phone" class="form-label">Teléfono</label>
-                <input type="tel" class="caja form-control" id="phone" placeholder="+999 99 999 9999" required>
+                <input type="tel" class="caja form-control" name="phone" id="phone" placeholder="+999 99 999 9999" required>
                 <div id="mensaje3" class="errores">Ingrese el telefono en este formato: +999 99 999 9999</div>
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Contraseña</label>
-                <input type="password" class="caja form-control" id="password" required>
+                <input type="password" class="caja form-control" name="password" id="password" required>
                 <div id="mensaje4" class="errores">Ingrese una contraseña</div>
             </div>
             <button type="submit" class="btn btn-primary" id="crearcuenta">Crear cuenta</button>
             <p>Ya tienes una cuenta? Inicia Sesión aquí.</p>
-            <button class="btn btn-success" onclick="window.location.href = 'inicioSesion.html';">Iniciar Sesión</button>
+            <button class="btn btn-success" onclick="window.location.href = 'inicioSesion.php';">Iniciar Sesión</button>
 
         </form>
     </div>
@@ -350,38 +355,64 @@
         </div>
     </footer>
     <script>
-        $("#mensajeValidacion").hide();
-        document.getElementById('signupForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            // Obtener los valores del formulario
-            const email = document.getElementById('email').value;
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const password = document.getElementById('password').value;
-            // Guardar los datos en localStorage
-            localStorage.setItem('email', email);
-            localStorage.setItem('name', name);
-            localStorage.setItem('phone', phone);
-            localStorage.setItem('password', password);
-            // Redirigir a la página de verificación de datos
-            window.location.href = 'verificacionRegistrado.html';
-            $(function () { // Cerrar el modal al hacer clic en el botón 
-                $("#closeModal").on("click", function () {
-                    $("#notFoundModal").fadeOut();
-                });
-                $("#closeModal2").on("click", function () {
-                    $("#notFoundModal2").fadeOut();
-                });
-                $(".modal-overlay").on("click", function (e) {
-                    if (e.target === this) {
-                        $(this).fadeOut();
+        $(document).ready(function () {
+            $("#crearcuenta").click(function (event) {
+                event.preventDefault();
+
+                var correo = $("#email").val();
+                var nombre = $("#name").val();
+                var usuario = $("#user").val();  // Obtener valor del nuevo campo
+                var telefono = $("#phone").val();
+                var contraseña = $("#password").val();
+                
+                let formatoNombre = /^[A-Za-z\s]{6,40}$/;
+                let formatoUsuario = /^[A-Za-z0-9_]{3,15}$/;  // Validación de usuario (alfanumérico, 3-15 caracteres)
+                let formatoTelefono = /^\+\d{2,3} \d{2} \d{3} \d{4}$/;
+                let formatoCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                // Validaciones
+                if (!formatoUsuario.test(usuario)) {
+                    $("#mensajeUsuario").fadeIn().text("El usuario debe ser alfanumérico y de 3 a 15 caracteres");
+                    return;
+                } else $("#mensajeUsuario").fadeOut();
+
+                if (!formatoCorreo.test(correo)) {
+                    $("#mensaje1").fadeIn();
+                    return;
+                } else $("#mensaje1").fadeOut();
+
+                if (!formatoNombre.test(nombre)) {
+                    $("#mensaje2").fadeIn();
+                    return;
+                } else $("#mensaje2").fadeOut();
+
+                if (!formatoTelefono.test(telefono)) {
+                    $("#mensaje3").fadeIn();
+                    return;
+                } else $("#mensaje3").fadeOut();
+
+                if (contraseña.length < 6) {
+                    $("#mensaje4").fadeIn().text("La contraseña debe tener al menos 6 caracteres");
+                    return;
+                } else $("#mensaje4").fadeOut();
+
+                // Enviar datos a PHP
+                $.ajax({
+                    url: "registro.php",
+                    type: "POST",
+                    data: { email: correo, name: nombre, user: usuario, phone: telefono, password: contraseña },
+                    dataType: "json",
+                    success: function (response) {
+                        if (response.status === "success") {
+                            alert(response.message);
+                            window.location.href = "inicioSesion.php";
+                        } else {
+                            alert(response.message);
+                        }
                     }
                 });
-                $("#btnContact").click(function () {
-                    $("#notFoundModal2").fadeIn();
-                });
-            })
-        });  
+            });
+        });
     </script>
 </body>
 

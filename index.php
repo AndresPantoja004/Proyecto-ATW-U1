@@ -1,9 +1,12 @@
 <?php
+  session_start(); // Iniciar sesión
+
   // Leer el contenido del archivo JSON
   $json = file_get_contents("json/camisetas.json");
-
-  // Convertir el JSON en un array de PHP
   $camisetas = json_decode($json, true);
+
+  // Verificar si el usuario ha iniciado sesión
+  $usuario_logueado = isset($_SESSION['usuario']);
 ?>
 
 <!DOCTYPE html>
@@ -153,6 +156,14 @@
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
               <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
+            <?php if ($usuario_logueado): ?>
+            <div id="perfilUsuario" class="usuario">
+                <p id="inicialUsuario"><?= strtoupper($_SESSION['usuario'][0]); ?></p> <!-- Primera letra del usuario -->
+            </div>
+            <a href="cerrarSesion.php" class="btn btn-outline-danger m-2">Cerrar Sesión</a>
+            <?php else: ?>
+            <a href="/inicioSesion.php" id="btnInit" class="btn btn-outline-success m-2">Iniciar Sesión</a>
+            <?php endif; ?>
           </div>
         </div>
       </nav>
