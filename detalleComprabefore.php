@@ -419,4 +419,4 @@ $usuarioLogueado = isset($_SESSION['usuario']);  // Esto verifica si la variable
 </script>
 </body>
 
-</html>corrige el error
+</html>
