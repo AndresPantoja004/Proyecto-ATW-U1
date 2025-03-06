@@ -21,6 +21,12 @@
 
     // Verificar si el usuario está logueado000
     $usuarioLogueado = isset($_SESSION['usuario']);  // Esto verifica si la variable de sesión 'usuario' existe
+
+    // Si el usuario no está logueado, redirigir a la página de login o mostrar un mensaje
+    if (!$usuarioLogueado) {
+      echo "Debes iniciar sesión para agregar productos al carrito.";
+      exit; // Detener la ejecución si el usuario no está logueado
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
