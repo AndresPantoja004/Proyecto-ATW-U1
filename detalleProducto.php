@@ -47,7 +47,7 @@
           width: 100%;
           height: 100%;
           object-fit: cover;
-      }
+      } 
 
       .error {
           border: 2px solid red;
