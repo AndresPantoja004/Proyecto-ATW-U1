@@ -159,7 +159,7 @@
               Temporadas
             </a>
             <ul class="dropdown-menu" >
-              <li><a class="dropdown-item" href="#">Temporadass 24-25</a></li>
+              <li><a class="dropdown-item" href="#">Temporada 24-25</a></li>
               <li><a class="dropdown-item" href="#">Temporada 23-24</a></li>                 
               <li><a class="dropdown-item" href="#">Temporada 22-23</a></li>
             </ul>
