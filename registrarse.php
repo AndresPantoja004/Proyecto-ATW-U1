@@ -254,7 +254,7 @@
             <div class="mb-3">
                 <label for="phone" class="form-label">Teléfono</label>
                 <input type="tel" class="caja form-control" name="phone" id="phone" placeholder="+999 99 999 9999" required>
-                <div id="mensaje3" class="errores">Ingrese el telefono en este formato: +999 99 999 9999</div>
+                <div id="mensaje3" class="errores">Ingrese el telefono en este formato: +999 999999999</div>
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Contraseña</label>
@@ -367,7 +367,7 @@
                 
                 let formatoNombre = /^[A-Za-z\s]{6,40}$/;
                 let formatoUsuario = /^[A-Za-z0-9_]{3,15}$/;  // Validación de usuario (alfanumérico, 3-15 caracteres)
-                let formatoTelefono = /^\+\d{2,3} \d{2} \d{3} \d{4}$/;
+                let formatoTelefono = /^\+\d{2,3} \d{2}\d{3}\d{4}$/;
                 let formatoCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
                 // Validaciones
