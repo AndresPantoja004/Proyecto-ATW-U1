@@ -19,39 +19,6 @@
         }
     }
 
-    
-        // Ruta del archivo JSON
-        $archivoCarrito = "json/carritosUsuarios.json";
-
-        // Leer contenido actual del carrito
-        $carrito = file_exists($archivoCarrito) ? json_decode(file_get_contents($archivoCarrito), true) : [];
-
-        // Verificar si el ítem ya está en el carrito
-        $existe = false;
-        foreach ($carrito as $item) {
-            if ($item["usuario"] == $_SESSION['usuario'] && $item["idCamiseta"] == $camiseta["id"]) {
-                $existe = true;
-                break;
-            }else{
-                $existe = false;
-            }
-        }
-
-        // Si no existe, agregarlo
-        if (!$existe) {
-            $nuevoItem = [
-                "usuario" => $_SESSION['usuario'],
-                "idCamiseta" => $camiseta["id"],
-                "precio" => $camiseta["precio"],
-                "vendido" => false
-            ];
-
-            $carrito[] = $nuevoItem;
-
-            // Guardar el carrito actualizado en el archivo JSON
-            file_put_contents($archivoCarrito, json_encode($carrito, JSON_PRETTY_PRINT));
-        }
-
     // Verificar si el usuario está logueado
     $usuarioLogueado = isset($_SESSION['usuario']);  // Esto verifica si la variable de sesión 'usuario' existe
 ?>
@@ -186,7 +153,7 @@
             <a class="nav-link active" style="color: white;" aria-current="page" href="#">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" style="color: white;" >Ofertas</a>
+            <a class="nav-link" href="#" style="color: white;" >Oferta</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" style="color: white;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
