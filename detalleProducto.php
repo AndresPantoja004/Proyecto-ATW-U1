@@ -1,21 +1,26 @@
 <?php
-  // Leer el contenido del archivo JSON
-  $json = file_get_contents("json/camisetas.json");
-  // Convertir el JSON en un array de PHP
-  $camisetas = json_decode($json, true);
+    // Iniciar la sesión
+    session_start();
 
-  // Obtener el ID de la camiseta
-  $id = $_GET["id"];
-  // Buscar la camiseta con el ID especificado
-  $camiseta = null;
+    // Leer el contenido del archivo JSON
+    $json = file_get_contents("json/camisetas.json");
+    // Convertir el JSON en un array de PHP
+    $camisetas = json_decode($json, true);
 
-  foreach ($camisetas as $c) {
-      if ($c["id"] == $id) {
-          $camiseta = $c;
-          break;
-      }
-  }
+    // Obtener el ID de la camiseta
+    $id = $_GET["id"];
+    // Buscar la camiseta con el ID especificado
+    $camiseta = null;
 
+    foreach ($camisetas as $c) {
+        if ($c["id"] == $id) {
+            $camiseta = $c;
+            break;
+        }
+    }
+
+    // Verificar si el usuario está logueado
+    $usuarioLogueado = isset($_SESSION['usuario']);  // Esto verifica si la variable de sesión 'usuario' existe
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -172,6 +177,14 @@
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
+        <?php if ($usuarioLogueado): ?>
+            <div id="perfilUsuario" class="usuario">
+                <p id="inicialUsuario"><?= strtoupper($_SESSION['usuario'][0]); ?></p> <!-- Primera letra del usuario -->
+            </div>
+            <a href="cerrarSesion.php" class="btn btn-outline-danger m-2">Cerrar Sesión</a>
+        <?php else: ?>
+            <a href="/inicioSesion.php" id="btnInit" class="btn btn-outline-success m-2">Iniciar Sesión</a>
+        <?php endif; ?>
       </div>
     </div>
   </nav>
