@@ -19,7 +19,7 @@
         }
     }
 
-    // Verificar si el usuario está logueado
+    // Verificar si el usuario está logueado000
     $usuarioLogueado = isset($_SESSION['usuario']);  // Esto verifica si la variable de sesión 'usuario' existe
 ?>
 <!DOCTYPE html>
@@ -160,7 +160,7 @@
             </a>
             <ul class="dropdown-menu" >
               <li><a class="dropdown-item" href="#">Temporada 24-25</a></li>
-              <li><a class="dropdown-item" href="#">Temporada 23-24</a></li>                 
+              <li><a class="dropdown-item" href="#">TemporadaA 23-24</a></li>                 
               <li><a class="dropdown-item" href="#">Temporada 22-23</a></li>
             </ul>
           </li>
