@@ -1,14 +1,42 @@
 [
     {
-        "usuario": "Gisella2025",
-        "idCamiseta": "1001-2024",
-        "precio": 33.99,
+        "usuario": "camila9",
+        "idCamiseta": "1002-2024",
+        "nombre": "Camiseta Ecuador 1\u00b0 equipaci\u00f3n Copa America 2024",
+        "precio": "33.99",
+        "imagen": "https:\/\/topflex-web.com\/wp-content\/uploads\/2024\/10\/Captura-de-pantalla-2024-03-22-a-las-17.15.04-300x300.jpg",
         "vendido": false
     },
     {
-        "usuario": "Gisella2025",
-        "idCamiseta": "1002-2024",
-        "precio": 33.99,
+        "usuario": "camila9",
+        "idCamiseta": "1004-2024",
+        "nombre": "Camiseta Ecuador 1\u00b0 equipaci\u00f3n Copa America 2024",
+        "precio": "33.99",
+        "imagen": "https:\/\/topflex-web.com\/wp-content\/uploads\/2024\/10\/Captura-de-pantalla-2024-07-26-a-las-3.35.26-Photoroom-300x300.jpg",
+        "vendido": false
+    },
+    {
+        "usuario": "camila9",
+        "idCamiseta": "1003-2024",
+        "nombre": "Camiseta Ecuador 1\u00b0 equipaci\u00f3n Copa America 2024",
+        "precio": "33.99",
+        "imagen": "https:\/\/topflex-web.com\/wp-content\/uploads\/2024\/10\/Captura-de-pantalla-2024-06-05-a-las-11.34.06-Photoroom-e1717745028435-1-300x300.png",
+        "vendido": false
+    },
+    {
+        "usuario": "camila9",
+        "idCamiseta": "1003-2024",
+        "nombre": "Camiseta Ecuador 1\u00b0 equipaci\u00f3n Copa America 2024",
+        "precio": "33.99",
+        "imagen": "https:\/\/topflex-web.com\/wp-content\/uploads\/2024\/10\/Captura-de-pantalla-2024-06-05-a-las-11.34.06-Photoroom-e1717745028435-1-300x300.png",
+        "vendido": false
+    },
+    {
+        "usuario": "camila9",
+        "idCamiseta": "1001-2025",
+        "nombre": "Camiseta Azul 2\u00b0 equipaci\u00f3n Copa America 2025",
+        "precio": "38.99",
+        "imagen": "https:\/\/topflex-web.com\/wp-content\/uploads\/2024\/10\/Captura-de-pantalla-2024-03-22-a-las-16.46.41-300x300.png",
         "vendido": false
     }
 ]

@@ -19,14 +19,8 @@
         }
     }
 
-    // Verificar si el usuario está logueado
+    // Verificar si el usuario está logueado000
     $usuarioLogueado = isset($_SESSION['usuario']);  // Esto verifica si la variable de sesión 'usuario' existe
-
-    // Si el usuario no está logueado, redirigir a la página de login o mostrar un mensaje
-    if (!$usuarioLogueado) {
-      echo "Debes iniciar sesión para agregar productos al carrito.";
-      exit; // Detener la ejecución si el usuario no está logueado
-    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -67,83 +61,97 @@
 
     </style>
     <script defer src="js/jQueryV3.7.1.js"></script>
-    
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-          const addToCartButton = document.querySelector(".btn-primary");
-      
-          addToCartButton.addEventListener("click", function (event) {
-              event.preventDefault(); 
-      
-              const size = document.getElementById("size").value;
-              const name = document.getElementById("name").value.trim();
-              const dorsal = document.getElementById("dorsal").value.trim();
-              const quantity = document.getElementById("quantity").value;
-      
-              
-              const errorMessages = document.querySelectorAll(".error-message");
-              errorMessages.forEach(message => message.remove());
-      
-              const inputs = document.querySelectorAll(".form-control, .form-select");
-              inputs.forEach(input => input.classList.remove("error"));
-      
-              let isValid = true;
-      
-              if (size === "Seleccionar") {
-                  showError(document.getElementById("size"), "Seleccionar talla");
-                  isValid = false;
-              }
-      
-              if (!/^[a-zA-Z\s]{1,10}$/.test(name)) {
-                  showError(document.getElementById("name"), "Max 10 letras.");
-                  isValid = false;
-              }
-      
-              if (!/^\d{1,2}$/.test(dorsal)) {
-                  showError(document.getElementById("dorsal"), "Max 2 dígitos.");
-                  isValid = false;
-              }
-              if (isNaN(dorsal)) {
-                  showError(document.getElementById("dorsal"), "Solo números.");
-                  isValid = false;
-              }
-      
-              if (parseInt(quantity) < 1 || isNaN(quantity)) {
-                  showError(document.getElementById("quantity"), "Minimo 1 Unidad");
-                  isValid = false;
-              }
-      
-              if (!isValid) {
-                  return; 
-              } else {
-                  alert("Producto añadido al carrito exitosamente.");                
-              }
-          });
-      
-          function showError(inputElement, message) {
-              inputElement.classList.add("error");
-      
-              const errorMessage = document.createElement("div");
-              errorMessage.classList.add("error-message");
-              errorMessage.textContent = message;
-      
-              inputElement.parentElement.appendChild(errorMessage);
-          }
+document.addEventListener("DOMContentLoaded", function () {
+    const addToCartButton = document.querySelector(".btn-primary");
 
-          // Cerrar el modal al hacer clic en el botón
-          $("#closeModal2").on("click", function() {
-              $("#notFoundModal2").fadeOut();
-          });
+    addToCartButton.addEventListener("click", function (event) {
+        event.preventDefault(); // Evita el envío del formulario
 
-          // Cerrar el modal al hacer clic fuera de la caja
-          $(".modal-overlay").on("click", function(e) {
-              if (e.target === this) {
-                  $(this).fadeOut();
-              }
-          });
+        const size = document.getElementById("size").value;
+        const name = document.getElementById("name").value.trim();
+        const dorsal = document.getElementById("dorsal").value.trim();
+        const quantity = document.getElementById("quantity").value;
 
-      });
-    </script>
+        // Validación de datos
+        const errorMessages = document.querySelectorAll(".error-message");
+        errorMessages.forEach(message => message.remove());
+
+        const inputs = document.querySelectorAll(".form-control, .form-select");
+        inputs.forEach(input => input.classList.remove("error"));
+
+        let isValid = true;
+
+        if (size === "Seleccionar") {
+            showError(document.getElementById("size"), "Seleccionar talla");
+            isValid = false;
+        }
+
+        if (!/^[a-zA-Z\s]{1,10}$/.test(name)) {
+            showError(document.getElementById("name"), "Max 10 letras.");
+            isValid = false;
+        }
+
+        if (!/^\d{1,2}$/.test(dorsal)) {
+            showError(document.getElementById("dorsal"), "Max 2 dígitos.");
+            isValid = false;
+        }
+        if (isNaN(dorsal)) {
+            showError(document.getElementById("dorsal"), "Solo números.");
+            isValid = false;
+        }
+
+        if (parseInt(quantity) < 1 || isNaN(quantity)) {
+            showError(document.getElementById("quantity"), "Minimo 1 Unidad");
+            isValid = false;
+        }
+
+        if (!isValid) {
+            return; // Si los datos no son válidos, no enviamos la solicitud
+        }
+
+        // Si los datos son válidos, se crea el objeto y se envía al backend
+        const idCamiseta = "<?= $camiseta['id']; ?>";  // ID de la camiseta
+        const nombre = "<?= $camiseta['nombre']; ?>"; // Nombre de la camiseta
+        const precio = "<?= $camiseta['precio']; ?>"; // Precio de la camiseta
+        const usuario = "<?= $_SESSION['usuario']; ?>"; // Nombre del usuario logueado
+
+        const datosCamiseta = {
+            usuario: usuario,
+            idCamiseta: idCamiseta,
+            nombre: nombre,
+            precio: precio,
+            imagen: "<?= $camiseta['imagen']; ?>" ,
+            vendido: false
+        };
+
+        fetch("añadirCarrito.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(datosCamiseta) // Convertir los datos a JSON
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert("Producto añadido al carrito.");
+            } else {
+                alert("Error: " + data.error);
+            }
+        })
+        .catch(error => console.error("Error:", error));
+    });
+
+    function showError(inputElement, message) {
+        inputElement.classList.add("error");
+
+        const errorMessage = document.createElement("div");
+        errorMessage.classList.add("error-message");
+        errorMessage.textContent = message;
+
+        inputElement.parentElement.appendChild(errorMessage);
+    }
+});
+   </script>
 </head>
 <body>
   <nav class="navbar navbar-expand-lg">
@@ -255,7 +263,7 @@
                     <div class="d-flex align-items-center gap-3">
                       <input type="number" id="quantity" class="form-control" name="quantity" value="1" min="1" style="width: 70px;">
                       <p>Unidades</p>
-                      <button type="button" class="btn btn-primary" id="addToCartBtn">Añadir al carrito</button>
+                      <button type="submit" class="btn btn-primary">Añadir al carrito</button>
                       <p class="mt-3">
                       <a href="/detalleCompra.php?id=<?=$camiseta['id']?>" class="btn btn-warning">Ver carrito</a>
                       </p>
@@ -326,30 +334,5 @@
     </div>
   </div>   
 </footer>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-      const addToCartButton = document.getElementById("addToCartBtn");
-
-      addToCartButton.addEventListener("click", function () {
-          const id = "<?= $camiseta['id']; ?>";  
-          const precio = "<?= $camiseta['precio']; ?>"; 
-
-          fetch("", {
-              method: "POST",
-              headers: { "Content-Type": "application/x-www-form-urlencoded" },
-              body: `id=${id}&precio=${precio}`
-          })
-          .then(response => response.json())
-          .then(data => {
-              if (data.success) {
-                  alert("Producto añadido al carrito.");
-              } else {
-                  alert("Error: " + data.error);
-              }
-          })
-          .catch(error => console.error("Error:", error));
-      });
-  });
-</script>
 </body>
 </html>

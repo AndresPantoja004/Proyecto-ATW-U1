@@ -16,7 +16,7 @@ if ($id !== null) {
         if ($c["id"] == $id) {
             $camiseta = $c;
             break;
-        }
+        }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
     }
 }
 
@@ -206,33 +206,33 @@ $usuarioLogueado = isset($_SESSION['usuario']);  // Esto verifica si la variable
 
         <div class="row">
             <div class="col-lg-8">
-                <div class="row columna p-3">
-                    <div class="col-3 text-center">
-                        <img src="<?= isset($camiseta['imagen']) ? $camiseta['imagen'] : 'ruta/por_defecto.jpg'; ?>" alt="camisa" class="img-fluid agrandada" id="camisa">
-                    </div>
-                    <div class=" col-3">
-                        <p><strong>Producto</strong></p>
-                        <p class="fw-bold">
-                            <?= $camiseta ? htmlspecialchars($camiseta['nombre']) : "No disponible"; ?>
-                        </p>
-                    </div>
-                    <div class="col-2">
-                        <p><strong>Precio</strong></p>
-                        <p class="text-success fs-4 fw-bold">
-                            <?= $camiseta ? "$" . number_format($camiseta['precio'], 2) : "No disponible"; ?>
-                        </p>
-                    </div>
-                    <div class="col-2">
-                        <p><strong>Cantidad</strong></p>
-                        <input type="number" min="1" max="20" value="1" class="form-control">
-                    </div>
-                    <div class="col-2">
-                        <p><strong>Subtotal</strong></p>
-                        <p id="subtotalP"><?= "$" . number_format($camiseta['precio'], 2); ?></p>
-                    </div>
-
-
-                </div>
+            <?php foreach ($productosUsuario as $camiseta): ?>
+        <div class="row columna p-3">
+            <div class="col-3 text-center">
+                <img src="<?= isset($camiseta['imagen']) ? $camiseta['imagen'] : 'ruta/por_defecto.jpg'; ?>" alt="camisa" class="img-fluid agrandada" id="camisa">
+            </div>
+            <div class="col-3">
+                <p><strong>Producto</strong></p>
+                <p class="fw-bold">
+                    <?= $camiseta ? htmlspecialchars($camiseta['nombre']) : "No disponible"; ?>
+                </p>
+            </div>
+            <div class="col-2">
+                <p><strong>Precio</strong></p>
+                <p class="text-success fs-4 fw-bold">
+                    <?= $camiseta ? "$" . number_format($camiseta['precio'], 2) : "No disponible"; ?>
+                </p>
+            </div>
+            <div class="col-2">
+                <p><strong>Cantidad</strong></p>
+                <input type="number" min="1" max="20" value="1" class="form-control">
+            </div>
+            <div class="col-2">
+                <p><strong>Subtotal</strong></p>
+                <p id="subtotalP"><?= "$" . number_format($camiseta['precio'], 2); ?></p>
+            </div>
+        </div>
+    <?php endforeach; ?>
 
                 <!-- Cupon -->
                 <div class="row columna cupon d-flex align-items-center justify-content-between flex-wrap">
@@ -406,8 +406,8 @@ $usuarioLogueado = isset($_SESSION['usuario']);  // Esto verifica si la variable
                 let descuento = (precioOriginal * descuentoPorcentaje) / 100;
                 let precioFinal = precioOriginal - descuento;
 
-                document.getElementById("descuento").innerText = -${descuentoPorcentaje}%;
-                document.getElementById("total").innerText = $${precioFinal.toFixed(2)};
+                document.getElementById("descuento").innerText = `-${descuentoPorcentaje}%`;
+                document.getElementById("total").innerText = `$${precioFinal.toFixed(2)}`;
                 document.getElementById("error-message").style.display = "none";
             } else {
                 document.getElementById("error-message").innerText = "Cupón inválido o expirado.";

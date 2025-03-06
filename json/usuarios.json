@@ -12,5 +12,12 @@
         "nombre": "Gissella Camila Saldarrega Obando",
         "telefono": "+593 96 963 2416",
         "password": "$2y$10$kgFjBrlrTIvGmrLNdIlkFOKWzHt1GlbjkDUGRGliYcWHM0hETuQZe"
+    },
+    {
+        "usuario": "camila9",
+        "email": "caobando9@espe.edu.ec",
+        "nombre": "camila antonela obando buitron",
+        "telefono": "+593 98 372 8242",
+        "password": "$2y$10$O8yuZ6z2LegCKiXeKUesuu9igPbDgsJFdC1xjVfxaKo.XQAFTFVj6"
     }
 ]
