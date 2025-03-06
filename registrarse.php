@@ -250,7 +250,7 @@
                 <label for="user" class="form-label">Nombre de usuario</label>
                 <input type="text" class="caja form-control" name="user" id="user" placeholder="Elige tu nombre de usuario" required>
                 <div id="mensajeUsuario" class="errores">El usuario debe ser alfanumérico y de 3 a 15 caracteres</div>
-            </div>
+            </div> 
             <div class="mb-3">
                 <label for="phone" class="form-label">Teléfono</label>
                 <input type="tel" class="caja form-control" name="phone" id="phone" placeholder="+999 99 999 9999" required>
